@@ -2,9 +2,11 @@ PODS:
   - AFNetworking (1.3.4)
   - Crary (0.1.0):
     - Crary/RestClient
+    - Crary/UIViewExtension
   - Crary/RestClient (0.1.0):
     - AFNetworking (~> 1.0)
     - ReactiveCocoa (~> 2.3)
+  - Crary/UIViewExtension (0.1.0)
   - Expecta (0.3.1)
   - ReactiveCocoa (2.3.1):
     - ReactiveCocoa/UI
@@ -26,7 +28,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AFNetworking: 80c4e0652b08eb34e25b9c0ff3c82556fe5967b4
-  Crary: 712328ab82d026641e240ad85426d8e8db845d5f
+  Crary: 2db7a8da7191ac5e88a64a16f1b590b45b361a24
   Expecta: 03aabd0a89d8dea843baecb19a7fd7466a69a31d
   ReactiveCocoa: dca75777b9d18990c8714a3a6f2149f29b4d1462
   Specta: 9141310f46b1f68b676650ff2854e1ed0b74163a

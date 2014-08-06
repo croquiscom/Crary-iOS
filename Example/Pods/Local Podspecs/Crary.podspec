@@ -30,4 +30,9 @@ Pod::Spec.new do |s|
     ss.dependency 'ReactiveCocoa', '~> 2.3'
     ss.ios.library = 'z'
   end
+  
+  s.subspec 'UIViewExtension' do |ss|
+    ss.public_header_files = 'Pod/Classes/UIAlertViewWithButton.h'
+    ss.source_files = 'Pod/Classes/UIAlertViewWithButton.{h,m}'
+  end
 end

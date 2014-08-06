@@ -24,6 +24,12 @@
 #define COCOAPODS_VERSION_MINOR_Crary_RestClient 1
 #define COCOAPODS_VERSION_PATCH_Crary_RestClient 0
 
+// Crary/UIViewExtension
+#define COCOAPODS_POD_AVAILABLE_Crary_UIViewExtension
+#define COCOAPODS_VERSION_MAJOR_Crary_UIViewExtension 0
+#define COCOAPODS_VERSION_MINOR_Crary_UIViewExtension 1
+#define COCOAPODS_VERSION_PATCH_Crary_UIViewExtension 0
+
 // Expecta
 #define COCOAPODS_POD_AVAILABLE_Expecta
 #define COCOAPODS_VERSION_MAJOR_Expecta 0
