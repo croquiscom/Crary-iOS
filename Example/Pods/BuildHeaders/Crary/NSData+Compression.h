@@ -1,1 +1,1 @@
-../../../../Crary/NSData+Compression.h
+../../../../Pod/Classes/NSData+Compression.h

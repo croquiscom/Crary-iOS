@@ -14,17 +14,18 @@ Pod::Spec.new do |s|
   s.homepage         = 'https://github.com/croquiscom/Crary-iOS'
   s.license          = 'MIT'
   s.author           = { 'yamigo' => 'yamigo1021@gmail.com' }
-  s.source           = { :git => "https://github.com/croquiscom/Crary-iOS.git", :tag => s.version.to_s }
+  s.source           = { :git => "https://github.com/croquiscom/Crary-iOS.git", :tag => '0.1.0' }
   s.requires_arc     = true
 
   s.platform         = :ios, '5.0'
   s.ios.deployment_target = '5.0'
 
-  s.public_header_files = 'Crary/CraryDefine.h'
+  s.public_header_files = 'Pod/Classes/CraryDefine.h'
+  s.source_files = 'Pod/Classes/CraryDefine.h'
   
-  s.subspec 'Rest' do |ss|
-    ss.public_header_files = 'Crary/CraryRestClient.h'
-    ss.source_files = 'Crary/AFGzipClient.{h,m}', 'Crary/NSData+Compression.{h,m}', 'Crary/CraryRestClient.m'
+  s.subspec 'RestClient' do |ss|
+    ss.public_header_files = 'Pod/Classes/CraryRestClient.h'
+    ss.source_files = 'Pod/Classes/AFGzipClient.{h,m}', 'Pod/Classes/NSData+Compression.{h,m}', 'Pod/Classes/CraryRestClient.{h,m}'
     ss.dependency 'AFNetworking', '~> 1.0'
     ss.dependency 'ReactiveCocoa', '~> 2.3'
     ss.ios.library = 'z'

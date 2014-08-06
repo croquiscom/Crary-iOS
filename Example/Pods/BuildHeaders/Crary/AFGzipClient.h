@@ -1,1 +1,1 @@
-../../../../Crary/AFGzipClient.h
+../../../../Pod/Classes/AFGzipClient.h

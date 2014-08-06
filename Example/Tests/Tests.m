@@ -5,7 +5,6 @@
 //  Created by yamigo on 08/06/2014.
 //  Copyright (c) 2014 yamigo. All rights reserved.
 //
-
 SpecBegin(InitialSpecs)
 
 describe(@"these will fail", ^{

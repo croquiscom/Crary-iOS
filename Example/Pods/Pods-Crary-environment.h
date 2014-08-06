@@ -18,11 +18,11 @@
 #define COCOAPODS_VERSION_MINOR_Crary 1
 #define COCOAPODS_VERSION_PATCH_Crary 0
 
-// Crary/Rest
-#define COCOAPODS_POD_AVAILABLE_Crary_Rest
-#define COCOAPODS_VERSION_MAJOR_Crary_Rest 0
-#define COCOAPODS_VERSION_MINOR_Crary_Rest 1
-#define COCOAPODS_VERSION_PATCH_Crary_Rest 0
+// Crary/RestClient
+#define COCOAPODS_POD_AVAILABLE_Crary_RestClient
+#define COCOAPODS_VERSION_MAJOR_Crary_RestClient 0
+#define COCOAPODS_VERSION_MINOR_Crary_RestClient 1
+#define COCOAPODS_VERSION_PATCH_Crary_RestClient 0
 
 // ReactiveCocoa
 #define COCOAPODS_POD_AVAILABLE_ReactiveCocoa
