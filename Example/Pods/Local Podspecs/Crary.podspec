@@ -25,7 +25,7 @@ Pod::Spec.new do |s|
   
   s.subspec 'RestClient' do |ss|
     ss.public_header_files = ''
-    ss.source_files = 'Pod/Classes/RestClient.h', 'Pod/Classes/AFGzipClient.{h,m}', 'Pod/Classes/NSData+Compression.{h,m}', 'Pod/Classes/CraryRestClient.{h,m}'
+    ss.source_files = 'Pod/Classes/AFGzipClient.{h,m}', 'Pod/Classes/NSData+Compression.{h,m}', 'Pod/Classes/CraryRestClient.{h,m}'
     ss.dependency 'AFNetworking', '~> 1.0'
     ss.dependency 'ReactiveCocoa', '~> 2.3'
     ss.ios.library = 'z'
@@ -33,6 +33,6 @@ Pod::Spec.new do |s|
   
   s.subspec 'UIViewExtension' do |ss|
     ss.public_header_files = ''
-    ss.source_files = 'Pod/Classes/UIViewExtension.h', 'Pod/Classes/UIAlertViewWithButton.{h,m}'
+    ss.source_files = 'Pod/Classes/UIAlertViewWithButton.{h,m}'
   end
 end
