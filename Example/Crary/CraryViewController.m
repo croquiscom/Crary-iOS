@@ -7,6 +7,7 @@
 //
 
 #import "CraryViewController.h"
+#import "UIAlertViewManager.h"
 
 @interface CraryViewController ()
 
@@ -18,6 +19,10 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    [UIAlertViewManager showWithTitle:@"title" message:@"message" firstButtonTitle:@"ok" secondButtonTitle:@"cancel" complete:^(NSInteger index) {
+        
+    }];
+    
 }
 
 - (void)didReceiveMemoryWarning

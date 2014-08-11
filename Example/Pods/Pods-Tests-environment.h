@@ -18,17 +18,23 @@
 #define COCOAPODS_VERSION_MINOR_Crary 1
 #define COCOAPODS_VERSION_PATCH_Crary 0
 
+// Crary/Category
+#define COCOAPODS_POD_AVAILABLE_Crary_Category
+#define COCOAPODS_VERSION_MAJOR_Crary_Category 0
+#define COCOAPODS_VERSION_MINOR_Crary_Category 1
+#define COCOAPODS_VERSION_PATCH_Crary_Category 0
+
 // Crary/RestClient
 #define COCOAPODS_POD_AVAILABLE_Crary_RestClient
 #define COCOAPODS_VERSION_MAJOR_Crary_RestClient 0
 #define COCOAPODS_VERSION_MINOR_Crary_RestClient 1
 #define COCOAPODS_VERSION_PATCH_Crary_RestClient 0
 
-// Crary/UIViewExtension
-#define COCOAPODS_POD_AVAILABLE_Crary_UIViewExtension
-#define COCOAPODS_VERSION_MAJOR_Crary_UIViewExtension 0
-#define COCOAPODS_VERSION_MINOR_Crary_UIViewExtension 1
-#define COCOAPODS_VERSION_PATCH_Crary_UIViewExtension 0
+// Crary/Util
+#define COCOAPODS_POD_AVAILABLE_Crary_Util
+#define COCOAPODS_VERSION_MAJOR_Crary_Util 0
+#define COCOAPODS_VERSION_MINOR_Crary_Util 1
+#define COCOAPODS_VERSION_PATCH_Crary_Util 0
 
 // Expecta
 #define COCOAPODS_POD_AVAILABLE_Expecta
