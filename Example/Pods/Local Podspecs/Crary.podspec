@@ -22,6 +22,7 @@ Pod::Spec.new do |s|
 
   s.public_header_files = 'Pod/Classes/CraryDefine.h', 'Pod/Classes/Crary.h'
   s.source_files = 'Pod/Classes/CraryDefine.h', 'Pod/Classes/Crary.h'
+  s.prefix_header_contents = '#import <SystemConfiguration/SystemConfiguration.h>', '#import <MobileCoreServices/MobileCoreServices.h>'
   
   s.subspec 'RestClient' do |ss|
     ss.public_header_files = 'Pod/Classes/CraryRestClient.h'

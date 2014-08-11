@@ -3,3 +3,5 @@
 #endif
 
 #import "Pods-Crary-environment.h"
+#import <SystemConfiguration/SystemConfiguration.h>
+#import <MobileCoreServices/MobileCoreServices.h>
