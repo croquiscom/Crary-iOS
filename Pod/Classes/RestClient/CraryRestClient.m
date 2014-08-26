@@ -22,27 +22,50 @@
     return _sharedClient;
 }
 
-+ (void)setBaseURL:(NSString *)baseURL
+- (id)init
 {
-    [[CraryRestClient sharedClient] createClientWithURL:[NSURL URLWithString:baseURL]];
+    self = [super init];
+    if (self) {
+        self.baseUrl = @"";
+        [self _createClient];
+    }
+    return self;
 }
 
-- (void)createClientWithURL:(NSURL*)url
+- (void)_createClient
 {
+    NSURL *url = [NSURL URLWithString:self.baseUrl];
+
     self.client = [[AFHTTPClient alloc] initWithBaseURL:url];
-    
     [self.client setParameterEncoding:AFJSONParameterEncoding];
     [self.client registerHTTPOperationClass:[AFJSONRequestOperation class]];
-    
-    // Accept HTTP Header; see http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.1
     [self.client setDefaultHeader:@"Accept" value:@"application/json"];
-    //[self.client setDefaultHeader:@"Accept-Encoding" value:@"gzip"];
     
     self.gZipClient = [[AFGzipClient alloc] initWithBaseURL:url];
 }
 
-#pragma mark Rest API Call
-- (void)postPath:(NSString *)path parameters:(NSDictionary *)parameters complete:(OnTaskComplete)complete
+- (void)setBaseUrl:(NSString *)baseUrl
+{
+    _baseUrl = baseUrl;
+    [self _createClient];
+}
+
+- (void)GET:(NSString *)path parameters:(NSDictionary *)parameters complete:(OnTaskComplete)complete
+{
+    [self.client getPath:path parameters:parameters success:^(AFHTTPRequestOperation *operation, id result) {
+        if(complete != nil)
+        {
+            complete(nil, result);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if(complete != nil)
+        {
+            complete(error, nil);
+        }
+    }];
+}
+
+- (void)POST:(NSString *)path parameters:(NSDictionary *)parameters complete:(OnTaskComplete)complete
 {
     [self.client postPath:path parameters:parameters success:^(AFHTTPRequestOperation *operation, id result) {
         if(complete != nil)
@@ -56,21 +79,8 @@
         }
     }];
 }
-- (void)postGzipPath:(NSString *)path parameters:(NSDictionary *)parameters complete:(OnTaskComplete)complete
-{
-    [self.gZipClient postPath:path parameters:parameters success:^(AFHTTPRequestOperation *operation, id result) {
-        if(complete != nil)
-        {
-            complete(nil, result);
-        }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        if(complete != nil)
-        {
-            complete(error, nil);
-        }
-    }];
-}
-- (void)putPath:(NSString *)path parameters:(NSDictionary *)parameters complete:(OnTaskComplete)complete
+
+- (void)PUT:(NSString *)path parameters:(NSDictionary *)parameters complete:(OnTaskComplete)complete
 {
     [self.client putPath:path parameters:parameters success:^(AFHTTPRequestOperation *operation, id result) {
         if(complete != nil)
@@ -84,7 +94,8 @@
         }
     }];
 }
-- (void)deletePath:(NSString *)path parameters:(NSDictionary *)parameters complete:(OnTaskComplete)complete
+
+- (void)DELETE:(NSString *)path parameters:(NSDictionary *)parameters complete:(OnTaskComplete)complete
 {
     [self.client deletePath:path parameters:parameters success:^(AFHTTPRequestOperation *operation, id result) {
         if(complete != nil)
@@ -98,9 +109,10 @@
         }
     }];
 }
-- (void)getPath:(NSString *)path parameters:(NSDictionary *)parameters complete:(OnTaskComplete)complete
+
+- (void)postGzipPath:(NSString *)path parameters:(NSDictionary *)parameters complete:(OnTaskComplete)complete
 {
-    [self.client getPath:path parameters:parameters success:^(AFHTTPRequestOperation *operation, id result) {
+    [self.gZipClient postPath:path parameters:parameters success:^(AFHTTPRequestOperation *operation, id result) {
         if(complete != nil)
         {
             complete(nil, result);

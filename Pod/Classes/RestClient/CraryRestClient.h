@@ -3,15 +3,14 @@
 
 @interface CraryRestClient : NSObject
 
-+ (CraryRestClient *)sharedClient;
-//TODO : setBaseUrl을 하지 않고 sharedClient를 가져오면 동작하지 않는다. 깔끔하게 처리 할 수 있는 방법은 있는가?
-+ (void)setBaseURL:(NSString*)baseURL;
+@property (nonatomic, strong) NSString *baseUrl;
 
-//rest api call
-- (void)postPath:(NSString *)path parameters:(NSDictionary *)parameters complete:(OnTaskComplete)complete;
++ (CraryRestClient *)sharedClient;
+
+- (void)GET:(NSString *)path parameters:(NSDictionary *)parameters complete:(OnTaskComplete)complete;
+- (void)POST:(NSString *)path parameters:(NSDictionary *)parameters complete:(OnTaskComplete)complete;
+- (void)PUT:(NSString *)path parameters:(NSDictionary *)parameters complete:(OnTaskComplete)complete;
+- (void)DELETE:(NSString *)path parameters:(NSDictionary *)parameters complete:(OnTaskComplete)complete;
 - (void)postGzipPath:(NSString *)path parameters:(NSDictionary *)parameters complete:(OnTaskComplete)complete;
-- (void)putPath:(NSString *)path parameters:(NSDictionary *)parameters complete:(OnTaskComplete)complete;
-- (void)deletePath:(NSString *)path parameters:(NSDictionary *)parameters complete:(OnTaskComplete)complete;
-- (void)getPath:(NSString *)path parameters:(NSDictionary *)parameters complete:(OnTaskComplete)complete;
 
 @end
