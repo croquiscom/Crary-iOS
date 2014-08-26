@@ -1,8 +1,7 @@
-#define FONT_SYSTEM @"systemFont"
-#define FONT_SYSTEM_BOLD @"systemFontBold"
-
-#define IS_IOS6 ([[[UIDevice currentDevice] systemVersion] compare:@"6.0" options:NSNumericSearch] != NSOrderedAscending)
-#define IS_IOS7 ([[[UIDevice currentDevice] systemVersion] compare:@"7.0" options:NSNumericSearch] != NSOrderedAscending)
-#define IS_PAD ([[UIDevice currentDevice] userInterfaceIdiom]==UIUserInterfaceIdiomPad)
-
+/**
+ * General Purpose Block Type for Callbacks
+ *
+ * @param error If the method execution was failed, this is the reason. If this is nil, the method execution was successful.
+ * @param result The result of the method execution
+ */
 typedef void (^OnTaskComplete)(NSError *error, id result);
