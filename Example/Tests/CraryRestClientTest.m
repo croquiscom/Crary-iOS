@@ -46,6 +46,20 @@ describe(@"basic", ^{
             done();
         }];
     });
+
+    it(@"Session", ^AsyncBlock{
+        CraryRestClient *restClient = [CraryRestClient sharedClient];
+        [CraryRestClient setBaseURL:@"http://localhost:3000/"];
+        NSDictionary *parameters = @{@"data": @"croquis"};
+        [restClient postPath:@"setData" parameters:parameters complete:^(NSError *error, id result) {
+            [restClient getPath:@"getData" parameters:parameters complete:^(NSError *error, id result) {
+                expect(result).to.beKindOf([NSDictionary class]);
+                expect([result count]).to.equal(1);
+                expect(result[@"data"]).to.equal(@"croquis");
+                done();
+            }];
+        }];
+    });
 });
 
 SpecEnd
