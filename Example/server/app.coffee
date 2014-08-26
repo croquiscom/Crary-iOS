@@ -4,6 +4,9 @@ setupRouter = (router) ->
   router.get '/echo', (req, res) ->
     res.sendResult response: req.query.message
 
+  router.post '/echo', (req, res) ->
+    res.sendResult response: req.body.message
+
 app = crary.express.createApp
   project_root: __dirname
   log4js_config:
