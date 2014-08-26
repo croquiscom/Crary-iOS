@@ -1,6 +1,4 @@
 #import <Foundation/Foundation.h>
-#import <ReactiveCocoa/ReactiveCocoa.h>
-#import "AFHTTPClient.h"
 #import "CraryDefine.h"
 
 @interface CraryRestClient : NSObject
@@ -20,10 +18,5 @@
 - (void)putPath:(NSString *)path parameters:(NSDictionary *)parameters complete:(OnTaskComplete)complete;
 - (void)deletePath:(NSString *)path parameters:(NSDictionary *)parameters complete:(OnTaskComplete)complete;
 - (void)getPath:(NSString *)path parameters:(NSDictionary *)parameters complete:(OnTaskComplete)complete;
-
-- (RACSignal *)rac_getPath:(NSString *)path parameters:(NSDictionary *)parameters;
-- (RACSignal *)rac_postPath:(NSString *)path parameters:(NSDictionary *)parameters;
-- (RACSignal *)rac_putPath:(NSString *)path parameters:(NSDictionary *)parameters;
-- (RACSignal *)rac_deletePath:(NSString *)path parameters:(NSDictionary *)parameters;
 
 @end

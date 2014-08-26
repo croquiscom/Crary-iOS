@@ -1,4 +1,5 @@
 #import "CraryRestClient.h"
+#import "AFHTTPClient.h"
 #import "AFJSONRequestOperation.h"
 #import "AFGzipClient.h"
 
@@ -140,44 +141,6 @@
             complete(error, nil);
         }
     }];
-}
-
-- (RACSignal *)rac_do:(NSString *)method path:(NSString *)path parameters:(NSDictionary *)parameters
-{
-    __weak AFHTTPClient *client = self.client;
-    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-        NSURLRequest *request = [client requestWithMethod:method path:path parameters:parameters];
-        __weak AFHTTPRequestOperation *operation = [client HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id result) {
-            [subscriber sendNext:result];
-            [subscriber sendCompleted];
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            [subscriber sendError:error];
-        }];
-        [client enqueueHTTPRequestOperation:operation];
-        return [RACDisposable disposableWithBlock:^{
-            [operation cancel];
-        }];
-    }];
-}
-
-- (RACSignal *)rac_getPath:(NSString *)path parameters:(NSDictionary *)parameters
-{
-    return [self rac_do:@"GET" path:path parameters:parameters];
-}
-
-- (RACSignal *)rac_postPath:(NSString *)path parameters:(NSDictionary *)parameters
-{
-    return [self rac_do:@"POST" path:path parameters:parameters];
-}
-
-- (RACSignal *)rac_putPath:(NSString *)path parameters:(NSDictionary *)parameters
-{
-    return [self rac_do:@"PUT" path:path parameters:parameters];
-}
-
-- (RACSignal *)rac_deletePath:(NSString *)path parameters:(NSDictionary *)parameters
-{
-    return [self rac_do:@"DELETE" path:path parameters:parameters];
 }
 
 @end
