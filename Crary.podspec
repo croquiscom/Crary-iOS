@@ -25,8 +25,8 @@ Pod::Spec.new do |s|
   s.prefix_header_contents = '#import <SystemConfiguration/SystemConfiguration.h>', '#import <MobileCoreServices/MobileCoreServices.h>'
   
   s.subspec 'RestClient' do |ss|
-    ss.public_header_files = 'Pod/Classes/CraryRestClient.h'
-    ss.source_files = 'Pod/Classes/AFGzipClient.{h,m}', 'Pod/Classes/NSData+Compression.{h,m}', 'Pod/Classes/CraryRestClient.{h,m}'
+    ss.public_header_files = 'Pod/Classes/RestClient/CraryRestClient.h'
+    ss.source_files = 'Pod/Classes/RestClient/AFGzipClient.{h,m}', 'Pod/Classes/RestClient/NSData+Compression.{h,m}', 'Pod/Classes/RestClient/CraryRestClient.{h,m}'
     ss.dependency 'AFNetworking', '~> 1.0'
     ss.dependency 'ReactiveCocoa', '~> 2.3'
     ss.ios.library = 'z'
