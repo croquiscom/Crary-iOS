@@ -3,8 +3,6 @@
 #import "AFJSONRequestOperation.h"
 #import "AFGzipClient.h"
 
-#define CROQUIS_APP_REST_COOKIE @"croquis_rest_app_cookie"
-
 @interface CraryRestClient ()
 @property (nonatomic, strong) AFHTTPClient *client;
 @property (nonatomic, strong) AFGzipClient *gZipClient;
@@ -41,34 +39,6 @@
     //[self.client setDefaultHeader:@"Accept-Encoding" value:@"gzip"];
     
     self.gZipClient = [[AFGzipClient alloc] initWithBaseURL:url];
-}
-
-#pragma mark Cookie Controll
-- (void) saveCookie
-{
-    NSArray *cookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies];
-    NSData *cookieData = [NSKeyedArchiver archivedDataWithRootObject:cookies];
-    [[NSUserDefaults standardUserDefaults] setObject:cookieData forKey:CROQUIS_APP_REST_COOKIE];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
-- (void) loadCookie
-{
-    NSData *cookiesdata = [[NSUserDefaults standardUserDefaults] objectForKey:CROQUIS_APP_REST_COOKIE];
-    if([cookiesdata length])
-    {
-        NSArray *cookies = [NSKeyedUnarchiver unarchiveObjectWithData:cookiesdata];
-        NSHTTPCookie *cookie;
-        for (cookie in cookies)
-            [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:cookie];
-    }
-}
-- (void)deleteCookie
-{
-    NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
-    NSHTTPCookie *cookie;
-    for (cookie in [storage cookies]) {
-        [storage deleteCookie:cookie];
-    }
 }
 
 #pragma mark Rest API Call
