@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		13B9931319AC7A5C008AA870 /* CraryRestClientTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B9931219AC7A5C008AA870 /* CraryRestClientTest.m */; };
+		13B9931919ADA577008AA870 /* CraryMessageBoxTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B9931819ADA577008AA870 /* CraryMessageBoxTest.m */; };
 		5BF4C2CABED14F69A9332B0C /* libPods-Crary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 793B862748874D1495673D98 /* libPods-Crary.a */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
@@ -37,6 +38,7 @@
 
 /* Begin PBXFileReference section */
 		13B9931219AC7A5C008AA870 /* CraryRestClientTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CraryRestClientTest.m; sourceTree = "<group>"; };
+		13B9931819ADA577008AA870 /* CraryMessageBoxTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CraryMessageBoxTest.m; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* Crary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Crary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -154,6 +156,7 @@
 		6003F5B5195388D20070C39A /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				13B9931819ADA577008AA870 /* CraryMessageBoxTest.m */,
 				13B9931219AC7A5C008AA870 /* CraryRestClientTest.m */,
 				6003F5B6195388D20070C39A /* Supporting Files */,
 			);
@@ -356,6 +359,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B9931319AC7A5C008AA870 /* CraryRestClientTest.m in Sources */,
+				13B9931919ADA577008AA870 /* CraryMessageBoxTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
