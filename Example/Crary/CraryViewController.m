@@ -19,7 +19,9 @@
 
 - (IBAction)onShowAlert:(id)sender
 {
-    [CraryMessageBox alert:@"message"];
+    [CraryMessageBox alert:@"message" title:@"title" done:^{
+        [CraryMessageBox alert:@"done"];
+    }];
 }
 
 @end
