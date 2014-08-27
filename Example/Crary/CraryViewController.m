@@ -1,5 +1,5 @@
 #import "CraryViewController.h"
-#import "UIAlertViewManager.h"
+#import "CraryMessageBox.h"
 
 @interface CraryViewController ()
 
@@ -17,10 +17,9 @@
     [super didReceiveMemoryWarning];
 }
 
-- (IBAction)onShowAlertView:(id)sender
+- (IBAction)onShowAlert:(id)sender
 {
-    [UIAlertViewManager showWithTitle:@"title" message:@"message" firstButtonTitle:@"ok" secondButtonTitle:@"cancel" complete:^(NSInteger index) {
-    }];
+    [CraryMessageBox alert:@"message"];
 }
 
 @end

@@ -40,5 +40,10 @@ Pod::Spec.new do |s|
     ss.public_header_files = 'UIAlertView+Crary.h'
     ss.source_files = 'Pod/Classes/UIAlertView+Crary.{h,m}'
   end
+  
+  s.subspec 'Dialog' do |ss|
+    ss.public_header_files = 'CraryMessageBox.h'
+    ss.source_files = 'Pod/Classes/Dialog/CraryMessageBox.{h,m}'
+  end
 
 end
