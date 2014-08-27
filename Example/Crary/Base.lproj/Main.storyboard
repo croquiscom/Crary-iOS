@@ -25,10 +25,21 @@
                                     <action selector="onShowAlert:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Srv-A1-jKx"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bKZ-Sj-itJ">
+                                <rect key="frame" x="0.0" y="85" width="320" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.89100009599999996" green="0.96590666920000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Show Confirm"/>
+                                <connections>
+                                    <action selector="onShowConfirm:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="ciL-6F-HEA"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ig2-WU-8Ak" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="B28-Jb-cdm"/>
+                            <constraint firstItem="bKZ-Sj-itJ" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="mi3-Sa-cID"/>
+                            <constraint firstAttribute="trailing" secondItem="bKZ-Sj-itJ" secondAttribute="trailing" id="sU6-vE-Kdw"/>
                             <constraint firstAttribute="trailing" secondItem="ig2-WU-8Ak" secondAttribute="trailing" id="uag-d1-INs"/>
                         </constraints>
                     </view>

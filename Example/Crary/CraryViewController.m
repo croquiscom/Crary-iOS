@@ -24,4 +24,11 @@
     }];
 }
 
+- (IBAction)onShowConfirm:(id)sender
+{
+    [CraryMessageBox confirm:@"Really?" done:^(BOOL result){
+        [CraryMessageBox alert:result ? @"You confirmed" : @"You cancelled"];
+    }];
+}
+
 @end

@@ -7,4 +7,7 @@
 + (void)alert:(NSString *)message title:(NSString *)title;
 + (void)alert:(NSString *)message title:(NSString *)title done:(void (^)())done;
 
++ (void)confirm:(NSString *)message done:(void (^)(BOOL result))done;
++ (void)confirm:(NSString *)message title:(NSString *)title done:(void (^)(BOOL result))done;
+
 @end

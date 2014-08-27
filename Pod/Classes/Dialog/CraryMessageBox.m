@@ -54,4 +54,20 @@
     [alert show];
 }
 
++ (void)confirm:(NSString *)message done:(void (^)(BOOL result))done
+{
+    NSString *title = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"];
+    [self confirm:message title:title done:done];
+}
+
++ (void)confirm:(NSString *)message title:(NSString *)title done:(void (^)(BOOL result))done
+{
+    UIAlertView *alert = [[UIAlertViewWithDone alloc] initWithTitle:title message:message cancelButtonTitle:NSLocalizedString(@"Cancel", @"") otherButtonTitles:@[NSLocalizedString(@"OK", @"")] done:^(int index) {
+        if (done) {
+            done(index==1);
+        }
+    }];
+    [alert show];
+}
+
 @end
