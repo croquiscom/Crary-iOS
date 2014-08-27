@@ -1,4 +1,5 @@
 #import "CraryMessageBox.h"
+#import "Crary+Private.h"
 
 @implementation CraryMessageBox
 
@@ -10,7 +11,7 @@
 
 + (void)alert:(NSString *)message title:(NSString *)title
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil];
     [alert show];
 }
 
