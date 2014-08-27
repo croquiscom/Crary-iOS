@@ -11,6 +11,5 @@
 - (void)post:(NSString *)path parameters:(NSDictionary *)parameters complete:(OnTaskComplete)complete;
 - (void)put:(NSString *)path parameters:(NSDictionary *)parameters complete:(OnTaskComplete)complete;
 - (void)delete:(NSString *)path parameters:(NSDictionary *)parameters complete:(OnTaskComplete)complete;
-- (void)postGzipPath:(NSString *)path parameters:(NSDictionary *)parameters complete:(OnTaskComplete)complete;
 
 @end

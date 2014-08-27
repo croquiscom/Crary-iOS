@@ -1,8 +1,9 @@
 #import "CraryRestClient.h"
+#import "CraryRestClient+Gzip.h"
 
 SpecBegin(CraryRestClientSpecs)
 
-describe(@"basic", ^{
+describe(@"default", ^{
     it(@"GET", ^AsyncBlock{
         CraryRestClient *restClient = [CraryRestClient sharedClient];
         restClient.baseUrl = @"http://localhost:3000/";
@@ -59,6 +60,18 @@ describe(@"basic", ^{
                 expect(result[@"data"]).to.equal(@"croquis");
                 done();
             }];
+        }];
+    });
+    
+    it(@"POST with gzipped parameters", ^AsyncBlock{
+        CraryRestClient *restClient = [CraryRestClient sharedClient];
+        restClient.baseUrl = @"http://localhost:3000/";
+        NSDictionary *parameters = @{@"message": @"hello"};
+        [restClient postGzip:@"echo" parameters:parameters complete:^(NSError *error, id result) {
+            expect(result).to.beKindOf([NSDictionary class]);
+            expect([result count]).to.equal(1);
+            expect(result[@"response"]).to.equal(@"hello");
+            done();
         }];
     });
 });

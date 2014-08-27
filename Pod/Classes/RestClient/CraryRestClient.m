@@ -1,16 +1,9 @@
 #import "CraryRestClient.h"
-#import "AFHTTPClient.h"
+#import "CraryRestClient+Private.h"
 #import "AFJSONRequestOperation.h"
-#import "AFGzipClient.h"
-
-@interface CraryRestClient ()
-@property (nonatomic, strong) AFHTTPClient *client;
-@property (nonatomic, strong) AFGzipClient *gZipClient;
-@end
 
 @implementation CraryRestClient
 
-#pragma mark - Initialize
 + (CraryRestClient *)sharedClient
 {
     static CraryRestClient *_sharedClient = nil;
@@ -27,102 +20,63 @@
     self = [super init];
     if (self) {
         self.baseUrl = @"";
-        [self _createClient];
     }
     return self;
 }
 
 - (void)_createClient
 {
-    NSURL *url = [NSURL URLWithString:self.baseUrl];
-
-    self.client = [[AFHTTPClient alloc] initWithBaseURL:url];
+    self.client = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:self.baseUrl]];
     [self.client setParameterEncoding:AFJSONParameterEncoding];
     [self.client registerHTTPOperationClass:[AFJSONRequestOperation class]];
     [self.client setDefaultHeader:@"Accept" value:@"application/json"];
-    
-    self.gZipClient = [[AFGzipClient alloc] initWithBaseURL:url];
+    [self.client setDefaultHeader:@"Content-Type" value:@"application/json"];
 }
 
 - (void)setBaseUrl:(NSString *)baseUrl
 {
     _baseUrl = baseUrl;
-    [self _createClient];
+    if (self.client) {
+        self.client = nil;
+    }
+}
+
+- (void)request:(NSString *)method path:(NSString *)path parameters:(NSDictionary *)parameters complete:(OnTaskComplete)complete
+{
+    if (!self.client) {
+        [self _createClient];
+    }
+	NSURLRequest *request = [self.client requestWithMethod:method path:path parameters:parameters];
+    AFHTTPRequestOperation *operation = [self.client HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        if(complete != nil) {
+            complete(nil, responseObject);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if(complete != nil) {
+            complete(error, nil);
+        }
+    }];
+    [self.client enqueueHTTPRequestOperation:operation];
 }
 
 - (void)get:(NSString *)path parameters:(NSDictionary *)parameters complete:(OnTaskComplete)complete
 {
-    [self.client getPath:path parameters:parameters success:^(AFHTTPRequestOperation *operation, id result) {
-        if(complete != nil)
-        {
-            complete(nil, result);
-        }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        if(complete != nil)
-        {
-            complete(error, nil);
-        }
-    }];
+    [self request:@"GET" path:path parameters:parameters complete:complete];
 }
 
 - (void)post:(NSString *)path parameters:(NSDictionary *)parameters complete:(OnTaskComplete)complete
 {
-    [self.client postPath:path parameters:parameters success:^(AFHTTPRequestOperation *operation, id result) {
-        if(complete != nil)
-        {
-            complete(nil, result);
-        }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        if(complete != nil)
-        {
-            complete(error, nil);
-        }
-    }];
+    [self request:@"POST" path:path parameters:parameters complete:complete];
 }
 
 - (void)put:(NSString *)path parameters:(NSDictionary *)parameters complete:(OnTaskComplete)complete
 {
-    [self.client putPath:path parameters:parameters success:^(AFHTTPRequestOperation *operation, id result) {
-        if(complete != nil)
-        {
-            complete(nil, result);
-        }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        if(complete != nil)
-        {
-            complete(error, nil);
-        }
-    }];
+    [self request:@"PUT" path:path parameters:parameters complete:complete];
 }
 
 - (void)delete:(NSString *)path parameters:(NSDictionary *)parameters complete:(OnTaskComplete)complete
 {
-    [self.client deletePath:path parameters:parameters success:^(AFHTTPRequestOperation *operation, id result) {
-        if(complete != nil)
-        {
-            complete(nil, result);
-        }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        if(complete != nil)
-        {
-            complete(error, nil);
-        }
-    }];
-}
-
-- (void)postGzipPath:(NSString *)path parameters:(NSDictionary *)parameters complete:(OnTaskComplete)complete
-{
-    [self.gZipClient postPath:path parameters:parameters success:^(AFHTTPRequestOperation *operation, id result) {
-        if(complete != nil)
-        {
-            complete(nil, result);
-        }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        if(complete != nil)
-        {
-            complete(error, nil);
-        }
-    }];
+    [self request:@"DELETE" path:path parameters:parameters complete:complete];
 }
 
 @end
