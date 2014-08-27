@@ -50,7 +50,7 @@
     [self _createClient];
 }
 
-- (void)GET:(NSString *)path parameters:(NSDictionary *)parameters complete:(OnTaskComplete)complete
+- (void)get:(NSString *)path parameters:(NSDictionary *)parameters complete:(OnTaskComplete)complete
 {
     [self.client getPath:path parameters:parameters success:^(AFHTTPRequestOperation *operation, id result) {
         if(complete != nil)
@@ -65,7 +65,7 @@
     }];
 }
 
-- (void)POST:(NSString *)path parameters:(NSDictionary *)parameters complete:(OnTaskComplete)complete
+- (void)post:(NSString *)path parameters:(NSDictionary *)parameters complete:(OnTaskComplete)complete
 {
     [self.client postPath:path parameters:parameters success:^(AFHTTPRequestOperation *operation, id result) {
         if(complete != nil)
@@ -80,7 +80,7 @@
     }];
 }
 
-- (void)PUT:(NSString *)path parameters:(NSDictionary *)parameters complete:(OnTaskComplete)complete
+- (void)put:(NSString *)path parameters:(NSDictionary *)parameters complete:(OnTaskComplete)complete
 {
     [self.client putPath:path parameters:parameters success:^(AFHTTPRequestOperation *operation, id result) {
         if(complete != nil)
@@ -95,7 +95,7 @@
     }];
 }
 
-- (void)DELETE:(NSString *)path parameters:(NSDictionary *)parameters complete:(OnTaskComplete)complete
+- (void)delete:(NSString *)path parameters:(NSDictionary *)parameters complete:(OnTaskComplete)complete
 {
     [self.client deletePath:path parameters:parameters success:^(AFHTTPRequestOperation *operation, id result) {
         if(complete != nil)
