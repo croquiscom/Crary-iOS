@@ -32,16 +32,6 @@ Pod::Spec.new do |s|
     ss.ios.library = 'z'
   end
   
-  s.subspec 'Util' do |ss|
-    ss.public_header_files = 'UIAlertViewManager.h'
-    ss.source_files = 'Pod/Classes/UIAlertViewManager.{h,m}'
-  end
-  
-  s.subspec 'Category' do |ss|
-    ss.public_header_files = 'UIAlertView+Crary.h'
-    ss.source_files = 'Pod/Classes/UIAlertView+Crary.{h,m}'
-  end
-  
   s.subspec 'Dialog' do |ss|
     ss.public_header_files = 'CraryMessageBox.h'
     ss.source_files = 'Pod/Classes/Dialog/CraryMessageBox.{h,m}'
