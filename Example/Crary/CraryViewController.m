@@ -26,8 +26,8 @@
 
 - (IBAction)onShowConfirm:(id)sender
 {
-    [CraryMessageBox confirmYesNo:@"Really?" done:^(BOOL result){
-        [CraryMessageBox alert:result ? @"You confirmed" : @"You cancelled"];
+    [CraryMessageBox confirmYesNo:@"Really?" done:^(BOOL yes_selected){
+        [CraryMessageBox alert:yes_selected ? @"You confirmed" : @"You cancelled"];
     }];
 }
 
