@@ -46,7 +46,7 @@
 
 + (void)alert:(NSString *)message title:(NSString *)title done:(void (^)())done
 {
-    UIAlertView *alert = [[UIAlertViewWithDone alloc] initWithTitle:title message:message cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:@[] done:^(int index) {
+    UIAlertView *alert = [[UIAlertViewWithDone alloc] initWithTitle:title message:message cancelButtonTitle:_T(@"OK") otherButtonTitles:@[] done:^(int index) {
         if (done) {
             done();
         }
@@ -54,20 +54,40 @@
     [alert show];
 }
 
-+ (void)confirm:(NSString *)message done:(void (^)(BOOL result))done
++ (void)confirm:(NSString *)message yes:(NSString *)yes no:(NSString *)no done:(void (^)(BOOL result))done
 {
     NSString *title = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"];
-    [self confirm:message title:title done:done];
+    [self confirm:message title:title yes:yes no:no done:done];
 }
 
-+ (void)confirm:(NSString *)message title:(NSString *)title done:(void (^)(BOOL result))done
++ (void)confirm:(NSString *)message title:(NSString *)title yes:(NSString *)yes no:(NSString *)no done:(void (^)(BOOL result))done
 {
-    UIAlertView *alert = [[UIAlertViewWithDone alloc] initWithTitle:title message:message cancelButtonTitle:NSLocalizedString(@"Cancel", @"") otherButtonTitles:@[NSLocalizedString(@"OK", @"")] done:^(int index) {
+    UIAlertView *alert = [[UIAlertViewWithDone alloc] initWithTitle:title message:message cancelButtonTitle:no otherButtonTitles:@[yes] done:^(int index) {
         if (done) {
             done(index==1);
         }
     }];
     [alert show];
+}
+
++ (void)confirmOkCancel:(NSString *)message done:(void (^)(BOOL result))done
+{
+    [self confirm:message yes:_T(@"OK") no:_T(@"Cancel") done:done];
+}
+
++ (void)confirmOkCancel:(NSString *)message title:(NSString *)title done:(void (^)(BOOL result))done
+{
+    [self confirm:message title:title yes:_T(@"OK") no:_T(@"Cancel") done:done];
+}
+
++ (void)confirmYesNo:(NSString *)message done:(void (^)(BOOL result))done
+{
+    [self confirm:message yes:_T(@"Yes") no:_T(@"No") done:done];
+}
+
++ (void)confirmYesNo:(NSString *)message title:(NSString *)title done:(void (^)(BOOL result))done
+{
+    [self confirm:message title:title yes:_T(@"Yes") no:_T(@"No") done:done];
 }
 
 @end
