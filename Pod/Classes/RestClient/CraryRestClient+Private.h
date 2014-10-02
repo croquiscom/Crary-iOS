@@ -1,9 +1,9 @@
 #import <Foundation/Foundation.h>
-#import "AFHTTPClient.h"
+#import "AFHTTPRequestOperationManager.h"
 
 @interface CraryRestClient ()
 
-@property (nonatomic, strong) AFHTTPClient *client;
-@property (nonatomic, strong) AFHTTPClient *clientGzip;
+@property (nonatomic, strong) AFHTTPRequestOperationManager *requestManager;
+@property (nonatomic, strong) AFHTTPRequestOperationManager *requestManagerGzip;
 
 @end

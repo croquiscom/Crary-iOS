@@ -1,18 +1,20 @@
 #import "CraryRestClient+Gzip.h"
 #import "CraryRestClient+Private.h"
-#import "AFJSONRequestOperation.h"
 #include <zlib.h>
 
 @implementation CraryRestClient (Gzip)
 
-- (void)_createClientGzip
+- (void)_createRequestManagerGzip
 {
-    self.clientGzip = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:self.baseUrl]];
-    [self.clientGzip setParameterEncoding:AFJSONParameterEncoding];
-    [self.clientGzip registerHTTPOperationClass:[AFJSONRequestOperation class]];
-    [self.clientGzip setDefaultHeader:@"Accept" value:@"application/json"];
-    [self.clientGzip setDefaultHeader:@"Content-Type" value:@"application/json"];
-    [self.clientGzip setDefaultHeader:@"Content-Encoding" value:@"gzip"];
+    self.requestManagerGzip = [AFHTTPRequestOperationManager manager];
+    AFHTTPRequestSerializer<AFURLRequestSerialization> *requestSerializer = [AFJSONRequestSerializer serializer];
+    [requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [requestSerializer setValue:@"gzip" forHTTPHeaderField:@"Content-Encoding"];
+
+    [self.requestManagerGzip setResponseSerializer:[AFJSONResponseSerializer serializer]];
+    [self.requestManagerGzip setRequestSerializer:requestSerializer];
+    
 }
 
 static NSData *deflateGzip(NSData *data)
@@ -53,17 +55,16 @@ static NSData *deflateGzip(NSData *data)
 
 - (void)postGzip:(NSString *)path parameters:(NSDictionary *)parameters complete:(OnTaskComplete)complete
 {
-    if (!self.clientGzip) {
-        [self _createClientGzip];
+    if (!self.requestManagerGzip) {
+        [self _createRequestManagerGzip];
     }
 
     NSData *data = [NSJSONSerialization dataWithJSONObject:parameters options:0 error:NULL];
     data = deflateGzip(data);
     
-    NSMutableURLRequest *request = [self.clientGzip requestWithMethod:@"POST" path:path parameters:nil];
+    NSMutableURLRequest *request = [self.requestManagerGzip.requestSerializer requestWithMethod:@"POST" URLString:[NSString stringWithFormat:@"%@%@", self.baseUrl, path] parameters:parameters error:nil];
     [request setHTTPBody:data];
-
-    AFHTTPRequestOperation *operation = [self.clientGzip HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    AFHTTPRequestOperation *operation = [self.requestManagerGzip HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
         if(complete != nil) {
             complete(nil, responseObject);
         }
@@ -72,7 +73,7 @@ static NSData *deflateGzip(NSData *data)
             complete(error, nil);
         }
     }];
-    [self.clientGzip enqueueHTTPRequestOperation:operation];
+    [self.requestManagerGzip.operationQueue addOperation:operation];
 }
 
 @end
