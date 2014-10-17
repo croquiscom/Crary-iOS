@@ -32,8 +32,8 @@ Pod::Spec.new do |s|
   end
   
   s.subspec 'Dialog' do |ss|
-    ss.public_header_files = 'CraryMessageBox.h'
-    ss.source_files = 'Pod/Classes/Dialog/CraryMessageBox.{h,m}'
+    ss.public_header_files = 'Pod/Classes/Dialog/CraryMessageBox.h', 'Pod/Classes/Dialog/CraryInputDialog.h'
+    ss.source_files = 'Pod/Classes/Dialog/CraryMessageBox.{h,m}', 'Pod/Classes/Dialog/CraryInputDialog.{h,m}'
   end
 
 end

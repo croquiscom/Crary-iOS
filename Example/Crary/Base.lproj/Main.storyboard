@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <deployment defaultVersion="1808" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
         <!--Crary View Controller-->
@@ -16,22 +17,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ig2-WU-8Ak">
-                                <rect key="frame" x="0.0" y="40" width="320" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.89100009603184271" green="0.96590666920457591" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Show Alert"/>
-                                <connections>
-                                    <action selector="onShowAlert:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Srv-A1-jKx"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bKZ-Sj-itJ">
                                 <rect key="frame" x="0.0" y="85" width="320" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.89100009599999996" green="0.96590666920000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Show Confirm"/>
                                 <connections>
                                     <action selector="onShowConfirm:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="ciL-6F-HEA"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fko-Vp-lgg">
+                                <rect key="frame" x="0.0" y="127" width="320" height="22"/>
+                                <color key="backgroundColor" red="0.89100009599999996" green="0.96590666920000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Show Select Single"/>
+                                <connections>
+                                    <action selector="onShowSelectItem:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Ybd-4P-9cT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ig2-WU-8Ak">
+                                <rect key="frame" x="0.0" y="40" width="320" height="22"/>
+                                <color key="backgroundColor" red="0.89100009603184271" green="0.96590666920457591" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Show Alert"/>
+                                <connections>
+                                    <action selector="onShowAlert:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Srv-A1-jKx"/>
                                 </connections>
                             </button>
                         </subviews>
