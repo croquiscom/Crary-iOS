@@ -1,13 +1,15 @@
 #import "CraryRestClient.h"
 #import "CraryRestClient+Gzip.h"
 
+#define BASE_URL @"http://localhost:3000/"
+
 SpecBegin(CraryRestClientSpecs)
 
 describe(@"default", ^{
     it(@"GET", ^AsyncBlock{
         CraryRestClient *restClient = [CraryRestClient sharedClient];
-        restClient.baseUrl = @"http://localhost:3000/";
-        [restClient get:@"echo" parameters:nil complete:^(NSError *error, id result) {
+        restClient.baseUrl = BASE_URL;
+        [restClient get:@"ping" parameters:nil complete:^(NSError *error, id result) {
             expect(result).to.beKindOf([NSDictionary class]);
             expect([result count]).to.equal(0);
             done();
@@ -16,9 +18,9 @@ describe(@"default", ^{
 
     it(@"GET with parameters", ^AsyncBlock{
         CraryRestClient *restClient = [CraryRestClient sharedClient];
-        restClient.baseUrl = @"http://localhost:3000/";
+        restClient.baseUrl = BASE_URL;
         NSDictionary *parameters = @{@"message": @"hello"};
-        [restClient get:@"echo" parameters:parameters complete:^(NSError *error, id result) {
+        [restClient get:@"ping" parameters:parameters complete:^(NSError *error, id result) {
             expect(result).to.beKindOf([NSDictionary class]);
             expect([result count]).to.equal(1);
             expect(result[@"response"]).to.equal(@"hello");
@@ -28,8 +30,8 @@ describe(@"default", ^{
 
     it(@"POST", ^AsyncBlock{
         CraryRestClient *restClient = [CraryRestClient sharedClient];
-        restClient.baseUrl = @"http://localhost:3000/";
-        [restClient post:@"echo" parameters:nil complete:^(NSError *error, id result) {
+        restClient.baseUrl = BASE_URL;
+        [restClient post:@"ping" parameters:nil complete:^(NSError *error, id result) {
             expect(result).to.beKindOf([NSDictionary class]);
             expect([result count]).to.equal(0);
             done();
@@ -38,9 +40,9 @@ describe(@"default", ^{
 
     it(@"POST with parameters", ^AsyncBlock{
         CraryRestClient *restClient = [CraryRestClient sharedClient];
-        restClient.baseUrl = @"http://localhost:3000/";
+        restClient.baseUrl = BASE_URL;
         NSDictionary *parameters = @{@"message": @"hello"};
-        [restClient post:@"echo" parameters:parameters complete:^(NSError *error, id result) {
+        [restClient post:@"ping" parameters:parameters complete:^(NSError *error, id result) {
             expect(result).to.beKindOf([NSDictionary class]);
             expect([result count]).to.equal(1);
             expect(result[@"response"]).to.equal(@"hello");
@@ -50,11 +52,11 @@ describe(@"default", ^{
 
     it(@"Session", ^AsyncBlock{
         CraryRestClient *restClient = [CraryRestClient sharedClient];
-        restClient.baseUrl = @"http://localhost:3000/";
+        restClient.baseUrl = BASE_URL;
         NSDictionary *parameters = @{@"data": @"croquis"};
         [restClient post:@"setData" parameters:parameters complete:^(NSError *error, id result) {
-            restClient.baseUrl = @"http://localhost:3000/";
-            [restClient get:@"getData" parameters:parameters complete:^(NSError *error, id result) {
+            restClient.baseUrl = BASE_URL;
+            [restClient get:@"getData" parameters:nil complete:^(NSError *error, id result) {
                 expect(result).to.beKindOf([NSDictionary class]);
                 expect([result count]).to.equal(1);
                 expect(result[@"data"]).to.equal(@"croquis");
@@ -65,9 +67,9 @@ describe(@"default", ^{
     
     it(@"POST with gzipped parameters", ^AsyncBlock{
         CraryRestClient *restClient = [CraryRestClient sharedClient];
-        restClient.baseUrl = @"http://localhost:3000/";
+        restClient.baseUrl = BASE_URL;
         NSDictionary *parameters = @{@"message": @"hello"};
-        [restClient postGzip:@"echo" parameters:parameters complete:^(NSError *error, id result) {
+        [restClient postGzip:@"ping" parameters:parameters complete:^(NSError *error, id result) {
             expect(result).to.beKindOf([NSDictionary class]);
             expect([result count]).to.equal(1);
             expect(result[@"response"]).to.equal(@"hello");
