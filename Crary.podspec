@@ -25,15 +25,13 @@ Pod::Spec.new do |s|
   s.source_files = 'Pod/Classes/Crary.{h,m}', 'Pod/Classes/Crary+Private.h', 'Pod/Classes/CraryDefine.h'
   
   s.subspec 'RestClient' do |ss|
-    ss.public_header_files = 'Pod/Classes/RestClient/CraryRestClient.h', 'Pod/Classes/RestClient/CraryRestClient+Gzip.h'
-    ss.source_files = 'Pod/Classes/RestClient/CraryRestClient+Private.h', 'Pod/Classes/RestClient/CraryRestClient.{h,m}', 'Pod/Classes/RestClient/CraryRestClient+Gzip.{h,m}'
+    ss.private_header_files = 'Pod/Classes/RestClient/CraryRestClient+Private.h'
+    ss.source_files = 'Pod/Classes/RestClient/*.{h,m}'
     ss.dependency 'AFNetworking', '~> 2.0'
     ss.ios.library = 'z'
   end
   
   s.subspec 'Dialog' do |ss|
-    ss.public_header_files = 'Pod/Classes/Dialog/CraryMessageBox.h', 'Pod/Classes/Dialog/CraryInputDialog.h'
-    ss.source_files = 'Pod/Classes/Dialog/CraryMessageBox.{h,m}', 'Pod/Classes/Dialog/CraryInputDialog.{h,m}'
+    ss.source_files = 'Pod/Classes/Dialog/*.{h,m}'
   end
-
 end
