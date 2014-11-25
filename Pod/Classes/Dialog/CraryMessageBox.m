@@ -2,11 +2,11 @@
 #import "Crary+Private.h"
 
 @interface UIAlertViewWithDone : UIAlertView <UIAlertViewDelegate>
-@property (nonatomic, copy) void (^done)(int index);
+@property (nonatomic, copy) void (^done)(NSInteger index);
 @end
 
 @implementation UIAlertViewWithDone
-- (id)initWithTitle:(NSString *)title message:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitles:(NSArray *)otherButtonTitles done:(void (^)(int index))done
+- (id)initWithTitle:(NSString *)title message:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitles:(NSArray *)otherButtonTitles done:(void (^)(NSInteger index))done
 {
     self = [super initWithTitle:title message:message delegate:nil cancelButtonTitle:cancelButtonTitle otherButtonTitles:nil];
     if (self) {
@@ -46,7 +46,7 @@
 
 + (void)alert:(NSString *)message title:(NSString *)title done:(void (^)())done
 {
-    UIAlertView *alert = [[UIAlertViewWithDone alloc] initWithTitle:title message:message cancelButtonTitle:_T(@"OK") otherButtonTitles:@[] done:^(int index) {
+    UIAlertView *alert = [[UIAlertViewWithDone alloc] initWithTitle:title message:message cancelButtonTitle:_T(@"OK") otherButtonTitles:@[] done:^(NSInteger index) {
         if (done) {
             done();
         }
@@ -62,7 +62,7 @@
 
 + (void)confirm:(NSString *)message title:(NSString *)title yes:(NSString *)yes no:(NSString *)no done:(void (^)(BOOL yes_selected))done
 {
-    UIAlertView *alert = [[UIAlertViewWithDone alloc] initWithTitle:title message:message cancelButtonTitle:no otherButtonTitles:@[yes] done:^(int index) {
+    UIAlertView *alert = [[UIAlertViewWithDone alloc] initWithTitle:title message:message cancelButtonTitle:no otherButtonTitles:@[yes] done:^(NSInteger index) {
         if (done) {
             done(index==1);
         }
