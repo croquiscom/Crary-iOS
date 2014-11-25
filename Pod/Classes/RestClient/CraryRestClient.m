@@ -1,6 +1,7 @@
 #import "CraryRestClient.h"
 #import "CraryRestClient+Private.h"
 #import "AFHTTPRequestOperationManager.h"
+#import "CraryRestClientAttachment.h"
 
 @implementation CraryRestClient
 
@@ -43,7 +44,7 @@
     [self.requestManager setRequestSerializer:requestSerializer];
 }
 
-- (void)request:(NSString *)method path:(NSString *)path parameters:(NSDictionary *)parameters complete:(OnTaskComplete)complete
+- (void)_request:(NSString *)method path:(NSString *)path parameters:(NSDictionary *)parameters complete:(OnTaskComplete)complete
 {
     if (!self.requestManager) {
         [self _createRequestManager];
@@ -62,24 +63,57 @@
     [self.requestManager.operationQueue addOperation:operation];
 }
 
+- (void)_request:(NSString *)method path:(NSString *)path parameters:(NSDictionary *)parameters attachments:(NSArray *)attachments complete:(OnTaskComplete)complete
+{
+    if (!self.requestManager) {
+        [self _createRequestManager];
+    }
+
+    NSMutableURLRequest *request = [self.requestManager.requestSerializer multipartFormRequestWithMethod:method URLString:[NSString stringWithFormat:@"%@%@", self.baseUrl, path] parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        for (CraryRestClientAttachment *attachment in attachments) {
+            [formData appendPartWithFileData:attachment.data name:attachment.name fileName:attachment.fileName mimeType:attachment.mimeType];
+        }
+    } error:nil];
+    AFHTTPRequestOperation *operation = [self.requestManager HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        if(complete != nil) {
+            complete(nil, responseObject);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if(complete != nil) {
+            complete(error, nil);
+        }
+    }];
+    [self.requestManager.operationQueue addOperation:operation];
+}
+
 - (void)get:(NSString *)path parameters:(NSDictionary *)parameters complete:(OnTaskComplete)complete
 {
-    [self request:@"GET" path:path parameters:parameters complete:complete];
+    [self _request:@"GET" path:path parameters:parameters complete:complete];
 }
 
 - (void)post:(NSString *)path parameters:(NSDictionary *)parameters complete:(OnTaskComplete)complete
 {
-    [self request:@"POST" path:path parameters:parameters complete:complete];
+    [self _request:@"POST" path:path parameters:parameters complete:complete];
+}
+
+- (void)post:(NSString *)path parameters:(NSDictionary *)parameters attachments:(NSArray *)attachments complete:(OnTaskComplete)complete
+{
+    [self _request:@"POST" path:path parameters:parameters attachments:attachments complete:complete];
 }
 
 - (void)put:(NSString *)path parameters:(NSDictionary *)parameters complete:(OnTaskComplete)complete
 {
-    [self request:@"PUT" path:path parameters:parameters complete:complete];
+    [self _request:@"PUT" path:path parameters:parameters complete:complete];
+}
+
+- (void)put:(NSString *)path parameters:(NSDictionary *)parameters attachments:(NSArray *)attachments complete:(OnTaskComplete)complete
+{
+    [self _request:@"PUT" path:path parameters:parameters attachments:attachments complete:complete];
 }
 
 - (void)delete:(NSString *)path parameters:(NSDictionary *)parameters complete:(OnTaskComplete)complete
 {
-    [self request:@"DELETE" path:path parameters:parameters complete:complete];
+    [self _request:@"DELETE" path:path parameters:parameters complete:complete];
 }
 
 @end

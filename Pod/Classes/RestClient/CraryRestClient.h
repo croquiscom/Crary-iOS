@@ -9,7 +9,9 @@
 
 - (void)get:(NSString *)path parameters:(NSDictionary *)parameters complete:(OnTaskComplete)complete;
 - (void)post:(NSString *)path parameters:(NSDictionary *)parameters complete:(OnTaskComplete)complete;
+- (void)post:(NSString *)path parameters:(NSDictionary *)parameters attachments:(NSArray *)attachments complete:(OnTaskComplete)complete;
 - (void)put:(NSString *)path parameters:(NSDictionary *)parameters complete:(OnTaskComplete)complete;
+- (void)put:(NSString *)path parameters:(NSDictionary *)parameters attachments:(NSArray *)attachments complete:(OnTaskComplete)complete;
 - (void)delete:(NSString *)path parameters:(NSDictionary *)parameters complete:(OnTaskComplete)complete;
 
 @end
