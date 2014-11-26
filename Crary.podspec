@@ -23,10 +23,15 @@ Pod::Spec.new do |s|
 
   s.public_header_files = 'Pod/Classes/Crary.h', 'Pod/Classes/CraryDefine.h'
   s.source_files = 'Pod/Classes/Crary.{h,m}', 'Pod/Classes/Crary+Private.h', 'Pod/Classes/CraryDefine.h'
+
+  s.subspec 'Util' do |ss|
+    ss.source_files = 'Pod/Classes/Util/*.{h,m}'
+  end
   
   s.subspec 'RestClient' do |ss|
     ss.private_header_files = 'Pod/Classes/RestClient/CraryRestClient+Private.h'
     ss.source_files = 'Pod/Classes/RestClient/*.{h,m}'
+    ss.dependency 'Crary/Util'
     ss.dependency 'AFNetworking', '~> 2.0'
     ss.dependency 'DCKeyValueObjectMapping'
     ss.ios.library = 'z'
