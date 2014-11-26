@@ -40,6 +40,26 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
+		<key>135F484B1A25649E00DBF90C</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>CraryRestClientMappingTest.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>135F484C1A25649E00DBF90C</key>
+		<dict>
+			<key>fileRef</key>
+			<string>135F484B1A25649E00DBF90C</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
 		<key>13B9931219AC7A5C008AA870</key>
 		<dict>
 			<key>fileEncoding</key>
@@ -637,6 +657,7 @@ fi
 			<string>2147483647</string>
 			<key>files</key>
 			<array>
+				<string>135F484C1A25649E00DBF90C</string>
 				<string>13B9931319AC7A5C008AA870</string>
 				<string>13B9931919ADA577008AA870</string>
 			</array>
@@ -778,6 +799,7 @@ fi
 			<array>
 				<string>13B9931819ADA577008AA870</string>
 				<string>13B9931219AC7A5C008AA870</string>
+				<string>135F484B1A25649E00DBF90C</string>
 				<string>6003F5B6195388D20070C39A</string>
 			</array>
 			<key>isa</key>

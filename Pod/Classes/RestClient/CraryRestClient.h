@@ -1,4 +1,5 @@
 #import <Foundation/Foundation.h>
+#import <DCKeyValueObjectMapping/DCKeyValueObjectMapping.h>
 #import "CraryDefine.h"
 
 @interface CraryRestClient : NSObject
@@ -7,11 +8,19 @@
 
 + (CraryRestClient *)sharedClient;
 
-- (void)get:(NSString *)path parameters:(NSDictionary *)parameters complete:(OnTaskComplete)complete;
-- (void)post:(NSString *)path parameters:(NSDictionary *)parameters complete:(OnTaskComplete)complete;
-- (void)post:(NSString *)path parameters:(NSDictionary *)parameters attachments:(NSArray *)attachments complete:(OnTaskComplete)complete;
-- (void)put:(NSString *)path parameters:(NSDictionary *)parameters complete:(OnTaskComplete)complete;
-- (void)put:(NSString *)path parameters:(NSDictionary *)parameters attachments:(NSArray *)attachments complete:(OnTaskComplete)complete;
-- (void)delete:(NSString *)path parameters:(NSDictionary *)parameters complete:(OnTaskComplete)complete;
+- (void)get:(NSString *)path parameters:(id)parameters complete:(OnTaskComplete)complete;
+- (void)post:(NSString *)path parameters:(id)parameters complete:(OnTaskComplete)complete;
+- (void)post:(NSString *)path parameters:(id)parameters attachments:(NSArray *)attachments complete:(OnTaskComplete)complete;
+- (void)put:(NSString *)path parameters:(id)parameters complete:(OnTaskComplete)complete;
+- (void)put:(NSString *)path parameters:(id)parameters attachments:(NSArray *)attachments complete:(OnTaskComplete)complete;
+- (void)delete:(NSString *)path parameters:(id)parameters complete:(OnTaskComplete)complete;
+
+// methods for object mapping
+- (void)get:(NSString *)path parameters:(id)parameters parser:(DCKeyValueObjectMapping *)parser complete:(OnTaskComplete)complete;
+- (void)post:(NSString *)path parameters:(id)parameters parser:(DCKeyValueObjectMapping *)parser complete:(OnTaskComplete)complete;
+- (void)post:(NSString *)path parameters:(id)parameters attachments:(NSArray *)attachments parser:(DCKeyValueObjectMapping *)parser complete:(OnTaskComplete)complete;
+- (void)put:(NSString *)path parameters:(id)parameters parser:(DCKeyValueObjectMapping *)parser complete:(OnTaskComplete)complete;
+- (void)put:(NSString *)path parameters:(id)parameters attachments:(NSArray *)attachments parser:(DCKeyValueObjectMapping *)parser complete:(OnTaskComplete)complete;
+- (void)delete:(NSString *)path parameters:(id)parameters parser:(DCKeyValueObjectMapping *)parser complete:(OnTaskComplete)complete;
 
 @end

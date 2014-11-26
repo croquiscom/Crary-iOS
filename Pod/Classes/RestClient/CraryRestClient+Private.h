@@ -6,4 +6,6 @@
 @property (nonatomic, strong) AFHTTPRequestOperationManager *requestManager;
 @property (nonatomic, strong) AFHTTPRequestOperationManager *requestManagerGzip;
 
+- (id)_parse:(id)result using:(DCKeyValueObjectMapping *)parser;
+
 @end

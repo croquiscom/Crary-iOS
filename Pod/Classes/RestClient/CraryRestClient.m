@@ -44,7 +44,7 @@
     [self.requestManager setRequestSerializer:requestSerializer];
 }
 
-- (void)_request:(NSString *)method path:(NSString *)path parameters:(NSDictionary *)parameters complete:(OnTaskComplete)complete
+- (void)_request:(NSString *)method path:(NSString *)path parameters:(id)parameters complete:(OnTaskComplete)complete
 {
     if (!self.requestManager) {
         [self _createRequestManager];
@@ -63,7 +63,7 @@
     [self.requestManager.operationQueue addOperation:operation];
 }
 
-- (void)_request:(NSString *)method path:(NSString *)path parameters:(NSDictionary *)parameters attachments:(NSArray *)attachments complete:(OnTaskComplete)complete
+- (void)_request:(NSString *)method path:(NSString *)path parameters:(id)parameters attachments:(NSArray *)attachments complete:(OnTaskComplete)complete
 {
     if (!self.requestManager) {
         [self _createRequestManager];
@@ -86,34 +86,117 @@
     [self.requestManager.operationQueue addOperation:operation];
 }
 
-- (void)get:(NSString *)path parameters:(NSDictionary *)parameters complete:(OnTaskComplete)complete
+- (void)get:(NSString *)path parameters:(id)parameters complete:(OnTaskComplete)complete
 {
     [self _request:@"GET" path:path parameters:parameters complete:complete];
 }
 
-- (void)post:(NSString *)path parameters:(NSDictionary *)parameters complete:(OnTaskComplete)complete
+- (void)post:(NSString *)path parameters:(id)parameters complete:(OnTaskComplete)complete
 {
     [self _request:@"POST" path:path parameters:parameters complete:complete];
 }
 
-- (void)post:(NSString *)path parameters:(NSDictionary *)parameters attachments:(NSArray *)attachments complete:(OnTaskComplete)complete
+- (void)post:(NSString *)path parameters:(id)parameters attachments:(NSArray *)attachments complete:(OnTaskComplete)complete
 {
     [self _request:@"POST" path:path parameters:parameters attachments:attachments complete:complete];
 }
 
-- (void)put:(NSString *)path parameters:(NSDictionary *)parameters complete:(OnTaskComplete)complete
+- (void)put:(NSString *)path parameters:(id)parameters complete:(OnTaskComplete)complete
 {
     [self _request:@"PUT" path:path parameters:parameters complete:complete];
 }
 
-- (void)put:(NSString *)path parameters:(NSDictionary *)parameters attachments:(NSArray *)attachments complete:(OnTaskComplete)complete
+- (void)put:(NSString *)path parameters:(id)parameters attachments:(NSArray *)attachments complete:(OnTaskComplete)complete
 {
     [self _request:@"PUT" path:path parameters:parameters attachments:attachments complete:complete];
 }
 
-- (void)delete:(NSString *)path parameters:(NSDictionary *)parameters complete:(OnTaskComplete)complete
+- (void)delete:(NSString *)path parameters:(id)parameters complete:(OnTaskComplete)complete
 {
     [self _request:@"DELETE" path:path parameters:parameters complete:complete];
+}
+
+- (id)_parse:(id)result using:(DCKeyValueObjectMapping *)parser
+{
+    if ([result isKindOfClass:[NSDictionary class]]) {
+        return [parser parseDictionary:result];
+    } else if ([result isKindOfClass:[NSArray class]]) {
+        return [parser parseArray:result];
+    } else {
+        return result;
+    }
+}
+
+- (void)get:(NSString *)path parameters:(id)parameters parser:(DCKeyValueObjectMapping *)parser complete:(OnTaskComplete)complete
+{
+    [self get:path parameters:parameters complete:^(NSError *error, id result) {
+        if (complete != nil) {
+            if (!error) {
+                result = [self _parse:result using:parser];
+            }
+            complete(error, result);
+        }
+    }];
+}
+
+- (void)post:(NSString *)path parameters:(id)parameters parser:(DCKeyValueObjectMapping *)parser complete:(OnTaskComplete)complete
+{
+    [self post:path parameters:parameters complete:^(NSError *error, id result) {
+        if (complete != nil) {
+            if (!error) {
+                result = [self _parse:result using:parser];
+            }
+            complete(error, result);
+        }
+    }];
+}
+
+- (void)post:(NSString *)path parameters:(id)parameters attachments:(NSArray *)attachments parser:(DCKeyValueObjectMapping *)parser complete:(OnTaskComplete)complete
+{
+    [self post:path parameters:parameters attachments:attachments complete:^(NSError *error, id result) {
+        if (complete != nil) {
+            if (!error) {
+                result = [self _parse:result using:parser];
+            }
+            complete(error, result);
+        }
+    }];
+}
+
+- (void)put:(NSString *)path parameters:(id)parameters parser:(DCKeyValueObjectMapping *)parser complete:(OnTaskComplete)complete
+{
+    [self put:path parameters:parameters complete:^(NSError *error, id result) {
+        if (complete != nil) {
+            if (!error) {
+                result = [self _parse:result using:parser];
+            }
+            complete(error, result);
+        }
+    }];
+}
+
+- (void)put:(NSString *)path parameters:(id)parameters attachments:(NSArray *)attachments parser:(DCKeyValueObjectMapping *)parser complete:(OnTaskComplete)complete
+{
+    [self put:path parameters:parameters attachments:attachments complete:^(NSError *error, id result) {
+        if (complete != nil) {
+            if (!error) {
+                result = [self _parse:result using:parser];
+            }
+            complete(error, result);
+        }
+    }];
+}
+
+- (void)delete:(NSString *)path parameters:(id)parameters parser:(DCKeyValueObjectMapping *)parser complete:(OnTaskComplete)complete
+{
+    [self delete:path parameters:parameters complete:^(NSError *error, id result) {
+        if (complete != nil) {
+            if (!error) {
+                result = [self _parse:result using:parser];
+            }
+            complete(error, result);
+        }
+    }];
 }
 
 @end

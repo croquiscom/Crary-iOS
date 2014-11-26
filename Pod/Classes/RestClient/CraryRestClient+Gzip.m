@@ -53,7 +53,7 @@ static NSData *deflateGzip(NSData *data)
     return [NSData dataWithData:compressed];
 }
 
-- (void)postGzip:(NSString *)path parameters:(NSDictionary *)parameters complete:(OnTaskComplete)complete
+- (void)postGzip:(NSString *)path parameters:(id)parameters complete:(OnTaskComplete)complete
 {
     if (!self.requestManagerGzip) {
         [self _createRequestManagerGzip];
@@ -74,6 +74,18 @@ static NSData *deflateGzip(NSData *data)
         }
     }];
     [self.requestManagerGzip.operationQueue addOperation:operation];
+}
+
+- (void)postGzip:(NSString *)path parameters:(id)parameters parser:(DCKeyValueObjectMapping *)parser complete:(OnTaskComplete)complete
+{
+    [self postGzip:path parameters:parameters complete:^(NSError *error, id result) {
+        if (complete != nil) {
+            if (!error) {
+                result = [self _parse:result using:parser];
+            }
+            complete(error, result);
+        }
+    }];
 }
 
 @end
