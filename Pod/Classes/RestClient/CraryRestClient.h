@@ -1,6 +1,7 @@
 #import <Foundation/Foundation.h>
-#import <DCKeyValueObjectMapping/DCKeyValueObjectMapping.h>
 #import "CraryDefine.h"
+
+@class DCKeyValueObjectMapping;
 
 @interface CraryRestClient : NSObject
 

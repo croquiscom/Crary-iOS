@@ -2,6 +2,7 @@
 #import "CraryRestClient+Private.h"
 #import "AFHTTPRequestOperationManager.h"
 #import "CraryRestClientAttachment.h"
+#import <DCKeyValueObjectMapping/DCKeyValueObjectMapping.h>
 
 @implementation CraryRestClient
 

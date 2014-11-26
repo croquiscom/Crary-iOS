@@ -3,6 +3,8 @@
 #import "CraryRestClient.h"
 #import "CraryRestClient+Gzip.h"
 #import "CraryRestClientAttachment.h"
+#import <DCKeyValueObjectMapping/DCKeyValueObjectMapping.h>
+#import <DCKeyValueObjectMapping/DCParserConfiguration.h>
 
 #define BASE_URL @"http://localhost:3000/"
 
@@ -136,6 +138,23 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _parser = [DCKeyValueObjectMapping mapperForClass:[CraryRestClientMappingTestPostAttachmentsResult class]];
+    });
+    return _parser;
+}
+@end
+
+@interface CraryRestClientMappingTestDateResult : NSObject
+@property (strong, nonatomic) NSDate *d;
+@end
+@implementation CraryRestClientMappingTestDateResult
++ (DCKeyValueObjectMapping *)parser
+{
+    static DCKeyValueObjectMapping *_parser = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        DCParserConfiguration *config = [DCParserConfiguration configuration];
+        config.datePattern = @"yyyy-MM-dd'T'HH:mm:ss.SSSZ";
+        _parser = [DCKeyValueObjectMapping mapperForClass:[CraryRestClientMappingTestDateResult class] andConfiguration:config];
     });
     return _parser;
 }
@@ -315,6 +334,31 @@ it(@"POST attachments", ^{
             expect(result.f2.size).to.equal(7);
             expect(result.f2.type).to.equal(@"audio/mpeg");
 
+            done();
+        }];
+    });
+});
+
+it(@"Date", ^{
+    waitUntil(^(DoneCallback done) {
+        CraryRestClient *restClient = [CraryRestClient sharedClient];
+        restClient.baseUrl = BASE_URL;
+
+        [restClient post:@"echo" parameters:@{@"d":@"2014-11-25T10:30:05.010Z"} parser:[CraryRestClientMappingTestDateResult parser] complete:^(NSError *error, CraryRestClientMappingTestDateResult *result) {
+            expect(error).to.beNil;
+            expect(result).notTo.beNil;
+            NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+            [calendar setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
+            NSDateComponents *components = [calendar components:(NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSHourCalendarUnit|NSMinuteCalendarUnit|NSSecondCalendarUnit) fromDate:result.d];
+            expect(components.year).to.equal(2014);
+            expect(components.month).to.equal(11);
+            expect(components.day).to.equal(25);
+            expect(components.hour).to.equal(10);
+            expect(components.minute).to.equal(30);
+            expect(components.second).to.equal(5);
+            double time = [result.d timeIntervalSince1970]*1000;
+            time = time - floor(time/1000)*1000;
+            expect(time).to.equal(10);
             done();
         }];
     });
