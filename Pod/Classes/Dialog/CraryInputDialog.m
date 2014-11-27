@@ -1,13 +1,13 @@
 #import "CraryInputDialog.h"
 #import "Crary+Private.h"
 
-@interface UIActionSheetWithDone : UIActionSheet <UIActionSheetDelegate>
+@interface CraryInputDialogActionSheet : UIActionSheet <UIActionSheetDelegate>
 @property (nonatomic, copy) void (^done)(NSInteger buttonIndex);
 - (instancetype)initWithTitle:(NSString *)title cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitles:(NSArray *)otherButtonTitles done:(void(^)(NSInteger buttonIndex))done;
 
 @end
 
-@implementation UIActionSheetWithDone
+@implementation CraryInputDialogActionSheet
 - (instancetype)initWithTitle:(NSString *)title cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitles:(NSArray *)otherButtonTitles done:(void(^)(NSInteger buttonIndex))done
 {
     self = [super initWithTitle:title delegate:nil cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
@@ -37,7 +37,7 @@
 
 + (void)selectSingle:(UIView *)view items:(NSArray *)items done:(void (^)(NSInteger))done
 {
-    UIActionSheetWithDone *actionSheet = [[UIActionSheetWithDone alloc] initWithTitle:nil cancelButtonTitle:_T(@"Cancel") otherButtonTitles:items done:done];
+    CraryInputDialogActionSheet *actionSheet = [[CraryInputDialogActionSheet alloc] initWithTitle:nil cancelButtonTitle:_T(@"Cancel") otherButtonTitles:items done:done];
     [actionSheet showInView:view];
 }
 @end
