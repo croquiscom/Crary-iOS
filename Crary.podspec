@@ -9,16 +9,16 @@
 
 Pod::Spec.new do |s|
   s.name = 'Crary'
-  s.version = '0.1.1'
+  s.version = '0.1.2'
   s.summary = 'Croquis Library for iOS'
   s.homepage = 'https://github.com/croquiscom/Crary-iOS'
   s.license = 'MIT'
   s.author = { 'yamigo' => 'yamigo1021@gmail.com', 'sixmen' => 'sixmen@gmail.com' }
-  s.source = { :git => "https://github.com/croquiscom/Crary-iOS.git", :tag => 'v0.1.1' }
+  s.source = { :git => "https://github.com/croquiscom/Crary-iOS.git", :tag => 'v0.1.2' }
   s.requires_arc = true
 
-  s.platform = :ios, '6.0'
-  s.ios.deployment_target = '6.0'
+  s.platform = :ios, '7.0'
+  s.ios.deployment_target = '7.0'
   s.resource_bundle = { 'Crary' => ['Pod/Assets/*.lproj'] }
 
   s.public_header_files = 'Pod/Classes/Crary.h', 'Pod/Classes/CraryDefine.h'
