@@ -45,36 +45,23 @@
     [self.requestManager setRequestSerializer:requestSerializer];
 }
 
-- (void)_request:(NSString *)method path:(NSString *)path parameters:(id)parameters complete:(OnTaskComplete)complete
-{
-    if (!self.requestManager) {
-        [self _createRequestManager];
-    }
-
-    NSMutableURLRequest *request = [self.requestManager.requestSerializer requestWithMethod:method URLString:[NSString stringWithFormat:@"%@%@", self.baseUrl, path] parameters:parameters error:nil];
-    AFHTTPRequestOperation *operation = [self.requestManager HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        if(complete != nil) {
-            complete(nil, responseObject);
-        }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        if(complete != nil) {
-            complete(error, nil);
-        }
-    }];
-    [self.requestManager.operationQueue addOperation:operation];
-}
-
 - (void)_request:(NSString *)method path:(NSString *)path parameters:(id)parameters attachments:(NSArray *)attachments complete:(OnTaskComplete)complete
 {
     if (!self.requestManager) {
         [self _createRequestManager];
     }
 
-    NSMutableURLRequest *request = [self.requestManager.requestSerializer multipartFormRequestWithMethod:method URLString:[NSString stringWithFormat:@"%@%@", self.baseUrl, path] parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-        for (CraryRestClientAttachment *attachment in attachments) {
-            [formData appendPartWithFileData:attachment.data name:attachment.name fileName:attachment.fileName mimeType:attachment.mimeType];
-        }
-    } error:nil];
+    NSMutableURLRequest *request;
+    if ([attachments count]==0) {
+        request = [self.requestManager.requestSerializer requestWithMethod:method URLString:[NSString stringWithFormat:@"%@%@", self.baseUrl, path] parameters:parameters error:nil];
+    } else {
+        request = [self.requestManager.requestSerializer multipartFormRequestWithMethod:method URLString:[NSString stringWithFormat:@"%@%@", self.baseUrl, path] parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+            for (CraryRestClientAttachment *attachment in attachments) {
+                [formData appendPartWithFileData:attachment.data name:attachment.name fileName:attachment.fileName mimeType:attachment.mimeType];
+            }
+        } error:nil];
+    }
+
     AFHTTPRequestOperation *operation = [self.requestManager HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
         if(complete != nil) {
             complete(nil, responseObject);
@@ -89,12 +76,12 @@
 
 - (void)get:(NSString *)path parameters:(id)parameters complete:(OnTaskComplete)complete
 {
-    [self _request:@"GET" path:path parameters:parameters complete:complete];
+    [self _request:@"GET" path:path parameters:parameters attachments:nil complete:complete];
 }
 
 - (void)post:(NSString *)path parameters:(id)parameters complete:(OnTaskComplete)complete
 {
-    [self _request:@"POST" path:path parameters:parameters complete:complete];
+    [self _request:@"POST" path:path parameters:parameters attachments:nil complete:complete];
 }
 
 - (void)post:(NSString *)path parameters:(id)parameters attachments:(NSArray *)attachments complete:(OnTaskComplete)complete
@@ -104,7 +91,7 @@
 
 - (void)put:(NSString *)path parameters:(id)parameters complete:(OnTaskComplete)complete
 {
-    [self _request:@"PUT" path:path parameters:parameters complete:complete];
+    [self _request:@"PUT" path:path parameters:parameters attachments:nil complete:complete];
 }
 
 - (void)put:(NSString *)path parameters:(id)parameters attachments:(NSArray *)attachments complete:(OnTaskComplete)complete
@@ -114,7 +101,7 @@
 
 - (void)delete:(NSString *)path parameters:(id)parameters complete:(OnTaskComplete)complete
 {
-    [self _request:@"DELETE" path:path parameters:parameters complete:complete];
+    [self _request:@"DELETE" path:path parameters:parameters attachments:nil complete:complete];
 }
 
 - (id)_parse:(id)result using:(DCKeyValueObjectMapping *)parser
