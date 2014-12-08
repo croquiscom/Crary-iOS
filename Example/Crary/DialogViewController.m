@@ -1,12 +1,12 @@
-#import "CraryViewController.h"
+#import "DialogViewController.h"
 #import "CraryMessageBox.h"
 #import "CraryInputDialog.h"
 
-@interface CraryViewController ()
+@interface DialogViewController ()
 
 @end
 
-@implementation CraryViewController
+@implementation DialogViewController
 
 - (void)viewDidLoad
 {

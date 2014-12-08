@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="u7l-ao-h54">
     <dependencies>
-        <deployment defaultVersion="1808" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
-        <!--Crary View Controller-->
+        <!--Dialog-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="CraryViewController" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="DialogViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yMq-Ii-Hg2"/>
                         <viewControllerLayoutGuide type="bottom" id="JnV-bj-oo0"/>
@@ -17,8 +17,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ig2-WU-8Ak">
+                                <rect key="frame" x="0.0" y="90" width="320" height="22"/>
+                                <color key="backgroundColor" red="0.89100009603184271" green="0.96590666920457591" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Show Alert"/>
+                                <connections>
+                                    <action selector="onShowAlert:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Srv-A1-jKx"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bKZ-Sj-itJ">
-                                <rect key="frame" x="0.0" y="85" width="320" height="22"/>
+                                <rect key="frame" x="0.0" y="130" width="320" height="22"/>
                                 <color key="backgroundColor" red="0.89100009599999996" green="0.96590666920000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Show Confirm"/>
                                 <connections>
@@ -26,19 +34,11 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fko-Vp-lgg">
-                                <rect key="frame" x="0.0" y="127" width="320" height="22"/>
+                                <rect key="frame" x="0.0" y="170" width="320" height="22"/>
                                 <color key="backgroundColor" red="0.89100009599999996" green="0.96590666920000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Show Select Single"/>
                                 <connections>
                                     <action selector="onShowSelectItem:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Ybd-4P-9cT"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ig2-WU-8Ak">
-                                <rect key="frame" x="0.0" y="40" width="320" height="22"/>
-                                <color key="backgroundColor" red="0.89100009603184271" green="0.96590666920457591" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Show Alert"/>
-                                <connections>
-                                    <action selector="onShowAlert:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Srv-A1-jKx"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -50,10 +50,57 @@
                             <constraint firstAttribute="trailing" secondItem="ig2-WU-8Ak" secondAttribute="trailing" id="uag-d1-INs"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Dialog" id="6PY-lc-eXl"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="264" y="98"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="0vo-7V-jvA">
+            <objects>
+                <navigationController id="u7l-ao-h54" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="D5I-2g-FsU">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="EN2-hW-hjz" kind="relationship" relationship="rootViewController" id="2XB-LP-eJ1"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tbJ-md-1ah" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-735" y="98"/>
+        </scene>
+        <!--Main-->
+        <scene sceneID="aRx-9Z-eoL">
+            <objects>
+                <viewController id="EN2-hW-hjz" customClass="MainViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Sct-7v-dMs"/>
+                        <viewControllerLayoutGuide type="bottom" id="bDl-bk-5lh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4NL-SG-D5r">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j9W-YX-ugq">
+                                <rect key="frame" x="0.0" y="90" width="320" height="22"/>
+                                <color key="backgroundColor" red="0.89100009599999996" green="0.96590666920000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Dialog"/>
+                                <connections>
+                                    <action selector="onShowAlert:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="gJO-0b-fZ9"/>
+                                    <segue destination="vXZ-lx-hvc" kind="push" id="I7T-rI-nS2"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Main" id="wMM-jG-hmw"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8VR-7k-WzX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-202" y="98"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

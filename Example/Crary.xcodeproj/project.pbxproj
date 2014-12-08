@@ -160,6 +160,39 @@
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
+		<key>139B514F1A3550B1002D0C2A</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>MainViewController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>139B51501A3550B1002D0C2A</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>MainViewController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>139B51511A3550B1002D0C2A</key>
+		<dict>
+			<key>fileRef</key>
+			<string>139B51501A3550B1002D0C2A</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
 		<key>2E17EDE856AF448EB3B467F3</key>
 		<dict>
 			<key>buildActionMask</key>
@@ -325,6 +358,7 @@ fi
 				<string>6003F59E195388D20070C39A</string>
 				<string>6003F5A7195388D20070C39A</string>
 				<string>6003F59A195388D20070C39A</string>
+				<string>139B51511A3550B1002D0C2A</string>
 			</array>
 			<key>isa</key>
 			<string>PBXSourcesBuildPhase</string>
@@ -500,11 +534,13 @@ fi
 			<array>
 				<string>6003F59C195388D20070C39A</string>
 				<string>6003F59D195388D20070C39A</string>
-				<string>6003F59F195388D20070C39A</string>
 				<string>6003F5A5195388D20070C39A</string>
 				<string>6003F5A6195388D20070C39A</string>
 				<string>6003F5A8195388D20070C39A</string>
 				<string>6003F594195388D20070C39A</string>
+				<string>6003F59F195388D20070C39A</string>
+				<string>139B514F1A3550B1002D0C2A</string>
+				<string>139B51501A3550B1002D0C2A</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
@@ -671,7 +707,7 @@ fi
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.h</string>
 			<key>path</key>
-			<string>CraryViewController.h</string>
+			<string>DialogViewController.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -682,7 +718,7 @@ fi
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.objc</string>
 			<key>path</key>
-			<string>CraryViewController.m</string>
+			<string>DialogViewController.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
