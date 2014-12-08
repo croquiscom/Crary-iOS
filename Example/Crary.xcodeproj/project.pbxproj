@@ -111,6 +111,7 @@
 			<key>children</key>
 			<array>
 				<string>135F48591A25C7B400DBF90C</string>
+				<string>139B51581A357F8F002D0C2A</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
@@ -190,6 +191,26 @@
 		<dict>
 			<key>fileRef</key>
 			<string>139B51501A3550B1002D0C2A</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>139B51581A357F8F002D0C2A</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>CrarySimpleMarkupTest.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>139B51591A357F8F002D0C2A</key>
+		<dict>
+			<key>fileRef</key>
+			<string>139B51581A357F8F002D0C2A</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
@@ -757,6 +778,7 @@ fi
 				<string>135F485A1A25C7B400DBF90C</string>
 				<string>135F485D1A25C7B400DBF90C</string>
 				<string>135F485B1A25C7B400DBF90C</string>
+				<string>139B51591A357F8F002D0C2A</string>
 			</array>
 			<key>isa</key>
 			<string>PBXSourcesBuildPhase</string>
