@@ -15,4 +15,7 @@
 @property (nonatomic) CGFloat cr_centerX;
 @property (nonatomic) CGFloat cr_centerY;
 
+- (void)cr_widthToFit;
+- (void)cr_heightToFit;
+
 @end

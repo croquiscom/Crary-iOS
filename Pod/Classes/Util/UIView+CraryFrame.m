@@ -122,4 +122,20 @@
     self.frame = frame;
 }
 
+- (void)cr_widthToFit
+{
+    CGRect rect = self.frame;
+    [self sizeToFit];
+    rect.size.width = self.frame.size.width;
+    self.frame = rect;
+}
+
+- (void)cr_heightToFit
+{
+    CGRect rect = self.frame;
+    [self sizeToFit];
+    rect.size.height = self.frame.size.height;
+    self.frame = rect;
+}
+
 @end
