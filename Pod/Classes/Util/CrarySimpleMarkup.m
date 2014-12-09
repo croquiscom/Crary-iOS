@@ -10,7 +10,7 @@
     }
     NSAttributedString *original = [str copy];
     __block NSUInteger offset = 0;
-    NSRegularExpression *re = [NSRegularExpression regularExpressionWithPattern:@"(?<!\\\\)\\[(.+?)(?<!\\\\)\\]" options:0 error:nil];
+    NSRegularExpression *re = [NSRegularExpression regularExpressionWithPattern:@"(?<!\\\\)\\[(.+?)(?<!\\\\)\\]" options:NSRegularExpressionDotMatchesLineSeparators error:nil];
     [re enumerateMatchesInString:original.string options:0 range:NSMakeRange(0, original.length) usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
         NSMutableAttributedString *substr = [[original attributedSubstringFromRange:[result rangeAtIndex:1]] mutableCopy];
         if (boldFont!=nil) {
@@ -28,7 +28,7 @@
 {
     NSAttributedString *original = [str copy];
     __block NSUInteger offset = 0;
-    NSRegularExpression *re = [NSRegularExpression regularExpressionWithPattern:@"(?<!\\\\)\\{#([0-9a-fA-F]{3,6})\\|(.+?)(?<!\\\\)\\}" options:0 error:nil];
+    NSRegularExpression *re = [NSRegularExpression regularExpressionWithPattern:@"(?<!\\\\)\\{#([0-9a-fA-F]{3,6})\\|(.+?)(?<!\\\\)\\}" options:NSRegularExpressionDotMatchesLineSeparators error:nil];
     [re enumerateMatchesInString:original.string options:0 range:NSMakeRange(0, original.length) usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
         unsigned int colorValue = 0;
         NSRange colorRange = [result rangeAtIndex:1];

@@ -111,6 +111,16 @@ describe(@"bold", ^{
         _checkFont(self, attrs, @"AppleSDGothicNeo-SemiBold", 14);
         attrs = _checkAttributes(self, str, 22, 22, 6, 0);
     });
+
+    it(@"multiline", ^{
+        NSAttributedString *str = [CrarySimpleMarkup parse:@"This is a [multiline\nbold] text" withFont:[UIFont fontWithName:@"AppleSDGothicNeo-Regular" size:14]];
+        expect(str.string).to.equal(@"This is a multiline\nbold text");
+        NSDictionary *attrs;
+        attrs = _checkAttributes(self, str, 0, 0, 10, 0);
+        attrs = _checkAttributes(self, str, 10, 10, 14, 1);
+        _checkFont(self, attrs, @"AppleSDGothicNeo-SemiBold", 14);
+        attrs = _checkAttributes(self, str, 24, 24, 5, 0);
+    });
 });
 
 describe(@"color", ^{
@@ -151,6 +161,16 @@ describe(@"color", ^{
         expect(str.string).to.equal(@"This is a {#931|color} text");
         NSDictionary *attrs;
         attrs = _checkAttributes(self, str, 0, 0, 27, 0);
+    });
+
+    it(@"multiline", ^{
+        NSAttributedString *str = [CrarySimpleMarkup parse:@"This is a {#931|multiline\ncolor} text" withFont:nil];
+        expect(str.string).to.equal(@"This is a multiline\ncolor text");
+        NSDictionary *attrs;
+        attrs = _checkAttributes(self, str, 0, 0, 10, 0);
+        attrs = _checkAttributes(self, str, 10, 10, 15, 1);
+        _checkColor(self, attrs, 0x99, 0x33, 0x11);
+        attrs = _checkAttributes(self, str, 25, 25, 5, 0);
     });
 });
 
