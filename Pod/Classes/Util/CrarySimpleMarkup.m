@@ -66,3 +66,12 @@
 }
 
 @end
+
+@implementation UILabel (CrarySimpleMarkup)
+
+- (void)setCr_simpleMarkupText:(NSString *)simpleMarkupText
+{
+    self.attributedText = [CrarySimpleMarkup parse:simpleMarkupText withFont:self.font];
+}
+
+@end
