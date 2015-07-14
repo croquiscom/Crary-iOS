@@ -3,9 +3,12 @@
 
 @class DCKeyValueObjectMapping;
 
+#define CRARY_TIMEOUT_INTERVAL  60  // NSMutableURLRequest.timeoutInterval default value
+
 @interface CraryRestClient : NSObject
 
 @property (nonatomic, strong) NSString *baseUrl;
+@property NSTimeInterval timeoutInterval;
 
 + (CraryRestClient *)sharedClient;
 
