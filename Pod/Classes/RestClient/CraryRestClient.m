@@ -22,6 +22,7 @@
     self = [super init];
     if (self) {
         self.baseUrl = @"";
+        self.timeoutInterval = CRARY_TIMEOUT_INTERVAL;
     }
     return self;
 }
@@ -61,6 +62,7 @@
             }
         } error:nil];
     }
+    [request setTimeoutInterval:self.timeoutInterval];
 
     AFHTTPRequestOperation *operation = [self.requestManager HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
         if(complete != nil) {
