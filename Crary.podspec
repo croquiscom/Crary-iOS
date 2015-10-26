@@ -9,12 +9,12 @@
 
 Pod::Spec.new do |s|
   s.name = 'Crary'
-  s.version = '0.1.4'
+  s.version = '0.2.0'
   s.summary = 'Croquis Library for iOS'
   s.homepage = 'https://github.com/croquiscom/Crary-iOS'
   s.license = 'MIT'
   s.author = { 'yamigo' => 'yamigo1021@gmail.com', 'sixmen' => 'sixmen@gmail.com' }
-  s.source = { :git => "https://github.com/croquiscom/Crary-iOS.git", :tag => 'v0.1.4' }
+  s.source = { :git => "https://github.com/croquiscom/Crary-iOS.git", :tag => 'v0.2.0' }
   s.requires_arc = true
 
   s.platform = :ios, '7.0'
