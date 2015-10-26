@@ -19,7 +19,7 @@ static NSDate *baseDate()
     return [calendar dateFromComponents:components];
 }
 
-SpecBegin(CraryIso9601DateFormatSpecs)
+SpecBegin(CraryIso9601DateFormat)
 
 it(@"parse", ^{
     NSDate *date = [CraryIso9601DateFormat parse:@"2014-11-25T10:30:05.010Z"];

@@ -14,6 +14,7 @@
 		139B51511A3550B1002D0C2A /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 139B51501A3550B1002D0C2A /* MainViewController.m */; };
 		139B51591A357F8F002D0C2A /* CrarySimpleMarkupTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 139B51581A357F8F002D0C2A /* CrarySimpleMarkupTest.m */; };
 		13DB8B391BDE0169004D480A /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13DB8B381BDE0169004D480A /* Launch Screen.storyboard */; };
+		13DB8B3B1BDE036A004D480A /* CraryRestClientResolveTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 13DB8B3A1BDE036A004D480A /* CraryRestClientResolveTest.m */; };
 		5BF4C2CABED14F69A9332B0C /* libPods-Crary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 793B862748874D1495673D98 /* libPods-Crary.a */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
@@ -52,6 +53,7 @@
 		139B51501A3550B1002D0C2A /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		139B51581A357F8F002D0C2A /* CrarySimpleMarkupTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CrarySimpleMarkupTest.m; sourceTree = "<group>"; };
 		13DB8B381BDE0169004D480A /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		13DB8B3A1BDE036A004D480A /* CraryRestClientResolveTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CraryRestClientResolveTest.m; sourceTree = "<group>"; };
 		3E2D50FFA37C26009F4E08E3 /* Pods-Crary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Crary.release.xcconfig"; path = "Pods/Target Support Files/Pods-Crary/Pods-Crary.release.xcconfig"; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* Crary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Crary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -118,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				135F48561A25C7B400DBF90C /* CraryRestClientMappingTest.m */,
+				13DB8B3A1BDE036A004D480A /* CraryRestClientResolveTest.m */,
 				135F48571A25C7B400DBF90C /* CraryRestClientTest.m */,
 			);
 			path = RestClient;
@@ -414,6 +417,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				135F485C1A25C7B400DBF90C /* CraryRestClientTest.m in Sources */,
+				13DB8B3B1BDE036A004D480A /* CraryRestClientResolveTest.m in Sources */,
 				135F485A1A25C7B400DBF90C /* CraryMessageBoxTest.m in Sources */,
 				135F485D1A25C7B400DBF90C /* CraryIso9601DateFormatTest.m in Sources */,
 				135F485B1A25C7B400DBF90C /* CraryRestClientMappingTest.m in Sources */,

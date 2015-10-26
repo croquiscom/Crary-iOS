@@ -30,7 +30,7 @@ static void _checkColor(id self, NSDictionary *attrs, unsigned int r, unsigned i
     expect(components[2]).to.equal(b/255.0f);
 }
 
-SpecBegin(CrarySimpleMarkupSpecs)
+SpecBegin(CrarySimpleMarkup)
 
 describe(@"bold", ^{
     it(@"font 1", ^{

@@ -6,7 +6,7 @@
 
 #define BASE_URL @"http://localhost:3000/"
 
-SpecBegin(CraryRestClientSpecs)
+SpecBegin(CraryRestClient)
 
 it(@"GET", ^{
     waitUntil(^(DoneCallback done) {

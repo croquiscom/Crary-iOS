@@ -53,10 +53,11 @@
     }
 
     NSMutableURLRequest *request;
+    NSURL *url = [NSURL URLWithString:path relativeToURL:[NSURL URLWithString:self.baseUrl]];
     if ([attachments count]==0) {
-        request = [self.requestManager.requestSerializer requestWithMethod:method URLString:[NSString stringWithFormat:@"%@%@", self.baseUrl, path] parameters:parameters error:nil];
+        request = [self.requestManager.requestSerializer requestWithMethod:method URLString:[url absoluteString] parameters:parameters error:nil];
     } else {
-        request = [self.requestManager.requestSerializer multipartFormRequestWithMethod:method URLString:[NSString stringWithFormat:@"%@%@", self.baseUrl, path] parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        request = [self.requestManager.requestSerializer multipartFormRequestWithMethod:method URLString:[url absoluteString] parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
             for (CraryRestClientAttachment *attachment in attachments) {
                 [formData appendPartWithFileData:attachment.data name:attachment.name fileName:attachment.fileName mimeType:attachment.mimeType];
             }

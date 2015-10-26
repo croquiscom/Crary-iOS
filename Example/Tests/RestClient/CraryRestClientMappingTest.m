@@ -160,7 +160,7 @@
 }
 @end
 
-SpecBegin(CraryRestClientMappingSpecs)
+SpecBegin(CraryRestClientMapping)
 
 it(@"GET", ^{
     waitUntil(^(DoneCallback done) {
