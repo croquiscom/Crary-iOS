@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="u7l-ao-h54">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="u7l-ao-h54">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
     </dependencies>
     <scenes>
         <!--Dialog-->
@@ -17,37 +17,55 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ig2-WU-8Ak">
-                                <rect key="frame" x="0.0" y="90" width="320" height="22"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ig2-WU-8Ak">
+                                <rect key="frame" x="0.0" y="90" width="320" height="30"/>
+                                <animations/>
                                 <color key="backgroundColor" red="0.89100009603184271" green="0.96590666920457591" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Nzb-CY-8xL"/>
+                                </constraints>
                                 <state key="normal" title="Show Alert"/>
                                 <connections>
                                     <action selector="onShowAlert:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Srv-A1-jKx"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bKZ-Sj-itJ">
-                                <rect key="frame" x="0.0" y="130" width="320" height="22"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bKZ-Sj-itJ">
+                                <rect key="frame" x="0.0" y="138" width="320" height="30"/>
+                                <animations/>
                                 <color key="backgroundColor" red="0.89100009599999996" green="0.96590666920000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="O2h-oW-3T4"/>
+                                </constraints>
                                 <state key="normal" title="Show Confirm"/>
                                 <connections>
                                     <action selector="onShowConfirm:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="ciL-6F-HEA"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fko-Vp-lgg">
-                                <rect key="frame" x="0.0" y="170" width="320" height="22"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fko-Vp-lgg">
+                                <rect key="frame" x="0.0" y="186" width="320" height="30"/>
+                                <animations/>
                                 <color key="backgroundColor" red="0.89100009599999996" green="0.96590666920000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="VjB-yQ-PoJ"/>
+                                </constraints>
                                 <state key="normal" title="Show Select Single"/>
                                 <connections>
                                     <action selector="onShowSelectItem:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Ybd-4P-9cT"/>
                                 </connections>
                             </button>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Fko-Vp-lgg" secondAttribute="trailing" id="3a3-wO-TjR"/>
                             <constraint firstItem="ig2-WU-8Ak" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="B28-Jb-cdm"/>
+                            <constraint firstItem="Fko-Vp-lgg" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="M4H-6d-GxB"/>
+                            <constraint firstItem="ig2-WU-8Ak" firstAttribute="top" secondItem="yMq-Ii-Hg2" secondAttribute="bottom" constant="26" id="c3D-Am-xiV"/>
+                            <constraint firstItem="bKZ-Sj-itJ" firstAttribute="top" secondItem="ig2-WU-8Ak" secondAttribute="bottom" constant="18" id="jMx-Ag-usF"/>
                             <constraint firstItem="bKZ-Sj-itJ" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="mi3-Sa-cID"/>
                             <constraint firstAttribute="trailing" secondItem="bKZ-Sj-itJ" secondAttribute="trailing" id="sU6-vE-Kdw"/>
                             <constraint firstAttribute="trailing" secondItem="ig2-WU-8Ak" secondAttribute="trailing" id="uag-d1-INs"/>
+                            <constraint firstItem="Fko-Vp-lgg" firstAttribute="top" secondItem="bKZ-Sj-itJ" secondAttribute="bottom" constant="18" id="zzB-vM-aVe"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Dialog" id="6PY-lc-eXl"/>
@@ -63,6 +81,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="D5I-2g-FsU">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
                     </navigationBar>
                     <connections>
                         <segue destination="EN2-hW-hjz" kind="relationship" relationship="rootViewController" id="2XB-LP-eJ1"/>
@@ -84,9 +103,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j9W-YX-ugq">
-                                <rect key="frame" x="0.0" y="90" width="320" height="22"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j9W-YX-ugq">
+                                <rect key="frame" x="0.0" y="90" width="320" height="30"/>
+                                <animations/>
                                 <color key="backgroundColor" red="0.89100009599999996" green="0.96590666920000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="rxw-N6-A3V"/>
+                                </constraints>
                                 <state key="normal" title="Dialog"/>
                                 <connections>
                                     <action selector="onShowAlert:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="gJO-0b-fZ9"/>
@@ -94,7 +117,13 @@
                                 </connections>
                             </button>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="j9W-YX-ugq" secondAttribute="trailing" id="Mrc-VA-6JP"/>
+                            <constraint firstItem="j9W-YX-ugq" firstAttribute="leading" secondItem="4NL-SG-D5r" secondAttribute="leading" id="lgB-uL-8po"/>
+                            <constraint firstItem="j9W-YX-ugq" firstAttribute="top" secondItem="Sct-7v-dMs" secondAttribute="bottom" constant="26" id="y13-Qc-x2B"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Main" id="wMM-jG-hmw"/>
                 </viewController>
@@ -103,9 +132,4 @@
             <point key="canvasLocation" x="-202" y="98"/>
         </scene>
     </scenes>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
-    </simulatedMetricsContainer>
 </document>
