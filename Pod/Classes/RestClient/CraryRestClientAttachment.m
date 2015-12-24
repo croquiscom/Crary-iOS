@@ -11,16 +11,20 @@
 
 @implementation CraryRestClientAttachment
 
-+ (CraryRestClientAttachment *)newData:(NSData *)data name:(NSString *)name mimeType:(NSString *)mimeType fileName:(NSString *)fileName
+- (instancetype)initData:(NSData *)data name:(NSString *)name mimeType:(NSString *)mimeType fileName:(NSString *)fileName
 {
-    CraryRestClientAttachment *attachment = [[CraryRestClientAttachment alloc] init];
-    if (attachment) {
-        attachment.data = data;
-        attachment.name = name;
-        attachment.mimeType = mimeType;
-        attachment.fileName = fileName;
+    self = [super init];
+    if (self) {
+        self.data = data;
+        self.name = name;
+        self.mimeType = mimeType;
+        self.fileName = fileName;
     }
-    return attachment;
+    return self;
+}
+
++ (CraryRestClientAttachment *)newData:(NSData *)data name:(NSString *)name mimeType:(NSString *)mimeType fileName:(NSString *)fileName {
+    return [[CraryRestClientAttachment alloc] initData:data name:name mimeType:mimeType fileName:fileName];
 }
 
 @end

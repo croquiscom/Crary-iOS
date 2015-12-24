@@ -29,9 +29,11 @@ PODS:
     - AFNetworking (~> 2.0)
     - Crary/Util
     - DCKeyValueObjectMapping
+    - ObjectMapper
   - Crary/Util (0.2.0)
   - DCKeyValueObjectMapping (1.5)
   - Expecta (0.3.1)
+  - ObjectMapper (1.0.1)
   - Specta (1.0.4)
 
 DEPENDENCIES:
@@ -45,9 +47,10 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
-  Crary: 9247fe40c9134ac9bf2e2dd3fbeb520800d03e3c
+  Crary: 3629e7e292e6c4ae9c0f6d4523c94829acae4fc5
   DCKeyValueObjectMapping: c2eb5a6529da100b2e49ef6a599663578051f077
   Expecta: a354d4633409dd9fe8c4f5ff5130426adbe31628
+  ObjectMapper: 98524bac0dca46c6b3d5ee02cd410fc700ec6ce2
   Specta: 69bb134672aae190a1379ff91df07dad8dd1f869
 
 COCOAPODS: 0.39.0

@@ -17,27 +17,28 @@ Pod::Spec.new do |s|
   s.source = { :git => "https://github.com/croquiscom/Crary-iOS.git", :tag => 'v0.2.0' }
   s.requires_arc = true
 
-  s.platform = :ios, '7.0'
-  s.ios.deployment_target = '7.0'
+  s.platform = :ios, '8.0'
+  s.ios.deployment_target = '8.0'
   s.resource_bundle = { 'Crary' => ['Pod/Assets/*.lproj'] }
 
   s.public_header_files = 'Pod/Classes/Crary.h', 'Pod/Classes/CraryDefine.h'
   s.source_files = 'Pod/Classes/Crary.{h,m}', 'Pod/Classes/Crary+Private.h', 'Pod/Classes/CraryDefine.h'
 
   s.subspec 'Util' do |ss|
-    ss.source_files = 'Pod/Classes/Util/*.{h,m}'
+    ss.source_files = 'Pod/Classes/Util/*.{h,m}', 'Pod/Classes/Util/*.swift'
   end
   
   s.subspec 'RestClient' do |ss|
     ss.private_header_files = 'Pod/Classes/RestClient/CraryRestClient+Private.h'
-    ss.source_files = 'Pod/Classes/RestClient/*.{h,m}'
+    ss.source_files = 'Pod/Classes/RestClient/*.{h,m}', 'Pod/Classes/RestClient/*.swift'
     ss.dependency 'Crary/Util'
     ss.dependency 'AFNetworking', '~> 2.0'
     ss.dependency 'DCKeyValueObjectMapping'
+    ss.dependency 'ObjectMapper'
     ss.ios.library = 'z'
   end
   
   s.subspec 'Dialog' do |ss|
-    ss.source_files = 'Pod/Classes/Dialog/*.{h,m}'
+    ss.source_files = 'Pod/Classes/Dialog/*.{h,m}', 'Pod/Classes/Dialog/*.swift'
   end
 end
