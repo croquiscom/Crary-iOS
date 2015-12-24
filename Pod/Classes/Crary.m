@@ -8,6 +8,9 @@
     static dispatch_once_t once;
     dispatch_once(&once, ^{
         bundle = [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"Crary" ofType:@"bundle"]];
+        if (bundle==nil) {
+            bundle = [NSBundle bundleForClass:[Crary self]];
+        }
     });
     NSArray *array = [[NSUserDefaults standardUserDefaults] objectForKey:@"AppleLanguages"];
     for (NSString *language in array) {

@@ -1,8 +1,12 @@
 target 'Crary', :exclusive => true do
+  platform :ios, '8.0'
+  use_frameworks!
   pod "Crary", :path => "../"
 end
 
 target 'Tests', :exclusive => true do
+  platform :ios, '8.0'
+  use_frameworks!
   pod "Crary", :path => "../"
 
   pod 'Specta'
