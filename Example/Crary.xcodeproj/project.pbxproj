@@ -10,7 +10,7 @@
 		135F485A1A25C7B400DBF90C /* CraryMessageBoxTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 135F48541A25C7B400DBF90C /* CraryMessageBoxTest.m */; };
 		135F485B1A25C7B400DBF90C /* CraryRestClientMappingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 135F48561A25C7B400DBF90C /* CraryRestClientMappingTest.m */; };
 		135F485C1A25C7B400DBF90C /* CraryRestClientTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 135F48571A25C7B400DBF90C /* CraryRestClientTest.m */; };
-		135F485D1A25C7B400DBF90C /* CraryIso9601DateFormatTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 135F48591A25C7B400DBF90C /* CraryIso9601DateFormatTest.m */; };
+		135F485D1A25C7B400DBF90C /* CraryIso8601DateFormatTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 135F48591A25C7B400DBF90C /* CraryIso8601DateFormatTest.m */; };
 		139B51511A3550B1002D0C2A /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 139B51501A3550B1002D0C2A /* MainViewController.m */; };
 		139B51591A357F8F002D0C2A /* CrarySimpleMarkupTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 139B51581A357F8F002D0C2A /* CrarySimpleMarkupTest.m */; };
 		13DB8B391BDE0169004D480A /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13DB8B381BDE0169004D480A /* Launch Screen.storyboard */; };
@@ -48,7 +48,7 @@
 		135F48541A25C7B400DBF90C /* CraryMessageBoxTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CraryMessageBoxTest.m; sourceTree = "<group>"; };
 		135F48561A25C7B400DBF90C /* CraryRestClientMappingTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CraryRestClientMappingTest.m; sourceTree = "<group>"; };
 		135F48571A25C7B400DBF90C /* CraryRestClientTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CraryRestClientTest.m; sourceTree = "<group>"; };
-		135F48591A25C7B400DBF90C /* CraryIso9601DateFormatTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CraryIso9601DateFormatTest.m; sourceTree = "<group>"; };
+		135F48591A25C7B400DBF90C /* CraryIso8601DateFormatTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CraryIso8601DateFormatTest.m; sourceTree = "<group>"; };
 		139B514F1A3550B1002D0C2A /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		139B51501A3550B1002D0C2A /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		139B51581A357F8F002D0C2A /* CrarySimpleMarkupTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CrarySimpleMarkupTest.m; sourceTree = "<group>"; };
@@ -129,7 +129,7 @@
 		135F48581A25C7B400DBF90C /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				135F48591A25C7B400DBF90C /* CraryIso9601DateFormatTest.m */,
+				135F48591A25C7B400DBF90C /* CraryIso8601DateFormatTest.m */,
 				139B51581A357F8F002D0C2A /* CrarySimpleMarkupTest.m */,
 			);
 			path = Util;
@@ -451,7 +451,7 @@
 				135F485C1A25C7B400DBF90C /* CraryRestClientTest.m in Sources */,
 				13DB8B3B1BDE036A004D480A /* CraryRestClientResolveTest.m in Sources */,
 				135F485A1A25C7B400DBF90C /* CraryMessageBoxTest.m in Sources */,
-				135F485D1A25C7B400DBF90C /* CraryIso9601DateFormatTest.m in Sources */,
+				135F485D1A25C7B400DBF90C /* CraryIso8601DateFormatTest.m in Sources */,
 				135F485B1A25C7B400DBF90C /* CraryRestClientMappingTest.m in Sources */,
 				139B51591A357F8F002D0C2A /* CrarySimpleMarkupTest.m in Sources */,
 			);

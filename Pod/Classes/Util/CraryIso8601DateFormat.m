@@ -1,6 +1,6 @@
-#import "CraryIso9601DateFormat.h"
+#import "CraryIso8601DateFormat.h"
 
-@implementation CraryIso9601DateFormat
+@implementation CraryIso8601DateFormat
 
 + (NSDateFormatter *)_formatter
 {

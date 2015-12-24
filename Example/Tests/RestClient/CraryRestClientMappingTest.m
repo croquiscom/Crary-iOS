@@ -347,9 +347,9 @@ it(@"Date", ^{
         [restClient post:@"echo" parameters:@{@"d":@"2014-11-25T10:30:05.010Z"} parser:[CraryRestClientMappingTestDateResult parser] complete:^(NSError *error, CraryRestClientMappingTestDateResult *result) {
             EXP_expect(error).to.beNil;
             EXP_expect(result).notTo.beNil;
-            NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-            [calendar setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
-            NSDateComponents *components = [calendar components:(NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSHourCalendarUnit|NSMinuteCalendarUnit|NSSecondCalendarUnit) fromDate:result.d];
+            NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+            calendar.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"UTC"];
+            NSDateComponents *components = [calendar components:(NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay|NSCalendarUnitHour|NSCalendarUnitMinute|NSCalendarUnitSecond) fromDate:result.d];
             EXP_expect(components.year).to.equal(2014);
             EXP_expect(components.month).to.equal(11);
             EXP_expect(components.day).to.equal(25);
