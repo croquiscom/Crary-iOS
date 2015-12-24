@@ -79,13 +79,13 @@
 }
 - (void)testA:(NSString *)a b:(int)b c:(BOOL)c d:(CraryRestClientMappingTestTestObject *)d
 {
-    expect(self.a).to.equal(a);
-    expect(self.b).to.equal(b);
-    expect(self.c).to.equal(c);
+    EXP_expect(self.a).to.equal(a);
+    EXP_expect(self.b).to.equal(b);
+    EXP_expect(self.c).to.equal(c);
     if (d==nil) {
-        expect(self.d).to.beNil;
+        EXP_expect(self.d).to.beNil;
     } else {
-        expect(self.d).notTo.beNil;
+        EXP_expect(self.d).notTo.beNil;
         [self.d testA:d.a b:d.b c:d.c d:d.d];
     }
 }
@@ -167,9 +167,9 @@ it(@"GET", ^{
         CraryRestClient *restClient = [CraryRestClient sharedClient];
         restClient.baseUrl = BASE_URL;
         [restClient get:@"ping" parameters:nil parser:[CraryRestClientMappingTestPingResult parser] complete:^(NSError *error, CraryRestClientMappingTestPingResult *result) {
-            expect(error).to.beNil;
-            expect(result).notTo.beNil;
-            expect(result.response).to.beNil;
+            EXP_expect(error).to.beNil;
+            EXP_expect(result).notTo.beNil;
+            EXP_expect(result.response).to.beNil;
             done();
         }];
     });
@@ -181,9 +181,9 @@ it(@"GET with parameters", ^{
         restClient.baseUrl = BASE_URL;
         NSDictionary *parameters = @{@"message": @"hello"};
         [restClient get:@"ping" parameters:parameters parser:[CraryRestClientMappingTestPingResult parser] complete:^(NSError *error, CraryRestClientMappingTestPingResult *result) {
-            expect(error).to.beNil;
-            expect(result).notTo.beNil;
-            expect(result.response).to.equal(@"hello");
+            EXP_expect(error).to.beNil;
+            EXP_expect(result).notTo.beNil;
+            EXP_expect(result.response).to.equal(@"hello");
             done();
         }];
     });
@@ -194,9 +194,9 @@ it(@"POST", ^{
         CraryRestClient *restClient = [CraryRestClient sharedClient];
         restClient.baseUrl = BASE_URL;
         [restClient post:@"ping" parameters:nil parser:[CraryRestClientMappingTestPingResult parser] complete:^(NSError *error, CraryRestClientMappingTestPingResult *result) {
-            expect(error).to.beNil;
-            expect(result).notTo.beNil;
-            expect(result.response).to.beNil;
+            EXP_expect(error).to.beNil;
+            EXP_expect(result).notTo.beNil;
+            EXP_expect(result.response).to.beNil;
             done();
         }];
     });
@@ -208,9 +208,9 @@ it(@"POST with parameters", ^{
         restClient.baseUrl = BASE_URL;
         NSDictionary *parameters = @{@"message": @"hello"};
         [restClient post:@"ping" parameters:parameters parser:[CraryRestClientMappingTestPingResult parser] complete:^(NSError *error, CraryRestClientMappingTestPingResult *result) {
-            expect(error).to.beNil;
-            expect(result).notTo.beNil;
-            expect(result.response).to.equal(@"hello");
+            EXP_expect(error).to.beNil;
+            EXP_expect(result).notTo.beNil;
+            EXP_expect(result.response).to.equal(@"hello");
             done();
         }];
     });
@@ -224,9 +224,9 @@ it(@"Session", ^{
         [restClient post:@"setData" parameters:parameters parser:[CraryRestClientMappingTestDataResult parser] complete:^(NSError *error, CraryRestClientMappingTestDataResult *result) {
             restClient.baseUrl = BASE_URL;
             [restClient get:@"getData" parameters:nil parser:[CraryRestClientMappingTestDataResult parser] complete:^(NSError *error, CraryRestClientMappingTestDataResult *result) {
-                expect(error).to.beNil;
-                expect(result).notTo.beNil;
-                expect(result.data).to.equal(@"croquis");
+                EXP_expect(error).to.beNil;
+                EXP_expect(result).notTo.beNil;
+                EXP_expect(result.data).to.equal(@"croquis");
                 done();
             }];
         }];
@@ -239,9 +239,9 @@ it(@"POST with gzipped parameters", ^{
         restClient.baseUrl = BASE_URL;
         NSDictionary *parameters = @{@"message": @"hello"};
         [restClient postGzip:@"ping" parameters:parameters parser:[CraryRestClientMappingTestPingResult parser] complete:^(NSError *error, CraryRestClientMappingTestPingResult *result) {
-            expect(error).to.beNil;
-            expect(result).notTo.beNil;
-            expect(result.response).to.equal(@"hello");
+            EXP_expect(error).to.beNil;
+            EXP_expect(result).notTo.beNil;
+            EXP_expect(result.response).to.equal(@"hello");
             done();
         }];
     });
@@ -253,12 +253,12 @@ it(@"Object", ^{
         restClient.baseUrl = BASE_URL;
         CraryRestClientMappingTestTestObject *parameters = [[CraryRestClientMappingTestTestObject alloc] initA:@"message" b:5 c:TRUE d:[[CraryRestClientMappingTestTestObject alloc] initA:@"sub" b:0 c:FALSE d:nil]];
         [restClient get:@"echo" parameters:[parameters toDict] parser:[CraryRestClientMappingTestTestObject parser] complete:^(NSError *error, CraryRestClientMappingTestTestObject *result) {
-            expect(error).to.beNil;
-            expect(result).notTo.beNil;
+            EXP_expect(error).to.beNil;
+            EXP_expect(result).notTo.beNil;
             [result testA:@"message" b:5 c:TRUE d:[[CraryRestClientMappingTestTestObject alloc] initA:@"sub" b:0 c:FALSE d:nil]];
             [restClient post:@"echo" parameters:[parameters toDict] parser:[CraryRestClientMappingTestTestObject parser] complete:^(NSError *error, CraryRestClientMappingTestTestObject *result) {
-                expect(error).to.beNil;
-                expect(result).notTo.beNil;
+                EXP_expect(error).to.beNil;
+                EXP_expect(result).notTo.beNil;
                 [result testA:@"message" b:5 c:TRUE d:[[CraryRestClientMappingTestTestObject alloc] initA:@"sub" b:0 c:FALSE d:nil]];
                 done();
             }];
@@ -275,9 +275,9 @@ it(@"List", ^{
         CraryRestClientMappingTestTestObject *obj3 = [[CraryRestClientMappingTestTestObject alloc] initA:@"obj3" b:33 c:FALSE d:nil];
         NSArray *parameters = @[[obj1 toDict], [obj2 toDict], [obj3 toDict]];
         [restClient post:@"echo" parameters:parameters parser:[CraryRestClientMappingTestTestObject parser] complete:^(NSError *error, NSArray *result) {
-            expect(error).to.beNil;
-            expect(result).notTo.beNil;
-            expect([result count]).to.equal(3);
+            EXP_expect(error).to.beNil;
+            EXP_expect(result).notTo.beNil;
+            EXP_expect([result count]).to.equal(3);
             [[result objectAtIndex:0] testA:@"obj1" b:11 c:FALSE d:nil];
             [[result objectAtIndex:1] testA:@"obj2" b:22 c:TRUE d:[[CraryRestClientMappingTestTestObject alloc] initA:@"sub" b:0 c:FALSE d:nil]];
             [[result objectAtIndex:2] testA:@"obj3" b:33 c:FALSE d:nil];
@@ -292,12 +292,12 @@ it(@"Underline/id convert", ^{
         restClient.baseUrl = BASE_URL;
         NSDictionary *parameters = @{@"user_id":@(123), @"full_name": @"Crary", @"phone_number":@"1-234-5678", @"id":@(456)};
         [restClient get:@"echo" parameters:parameters parser:[CraryRestClientMappingTestUnderlineConvertObject parser] complete:^(NSError *error, CraryRestClientMappingTestUnderlineConvertObject *result) {
-            expect(error).to.beNil;
-            expect(result).notTo.beNil;
-            expect(result.userId).to.equal(123);
-            expect(result.fullName).to.equal(@"Crary");
-            expect(result.phoneNumber).to.equal(@"1-234-5678");
-            expect(result.id).to.equal(456);
+            EXP_expect(error).to.beNil;
+            EXP_expect(result).notTo.beNil;
+            EXP_expect(result.userId).to.equal(123);
+            EXP_expect(result.fullName).to.equal(@"Crary");
+            EXP_expect(result.phoneNumber).to.equal(@"1-234-5678");
+            EXP_expect(result.id).to.equal(456);
             done();
         }];
     });
@@ -314,25 +314,25 @@ it(@"POST attachments", ^{
         CraryRestClientAttachment *attachment2 = [CraryRestClientAttachment newData:[NSData dataWithBytes:file2 length:7] name:@"f2" mimeType:@"audio/mpeg" fileName:@"sound.mp3"];
         NSArray *attachments = @[attachment1, attachment2];
         [restClient post:@"echo" parameters:parameters attachments:attachments parser:[CraryRestClientMappingTestPostAttachmentsResult parser] complete:^(NSError *error, CraryRestClientMappingTestPostAttachmentsResult *result) {
-            expect(error).to.beNil;
-            expect(result).notTo.beNil;
+            EXP_expect(error).to.beNil;
+            EXP_expect(result).notTo.beNil;
 
-            expect(result.a).to.equal(@"message");
-            expect(result.b).to.equal(5);
+            EXP_expect(result.a).to.equal(@"message");
+            EXP_expect(result.b).to.equal(5);
 
-            expect(result.c).notTo.beNil;
-            expect(result.c.d).to.equal(@"hello");
-            expect(result.c.e).to.equal(9);
+            EXP_expect(result.c).notTo.beNil;
+            EXP_expect(result.c.d).to.equal(@"hello");
+            EXP_expect(result.c.e).to.equal(9);
             
-            expect(result.f1).notTo.beNil;
-            expect(result.f1.fileName).to.equal(@"photo.jpg");
-            expect(result.f1.size).to.equal(3);
-            expect(result.f1.type).to.equal(@"image/jpeg");
+            EXP_expect(result.f1).notTo.beNil;
+            EXP_expect(result.f1.fileName).to.equal(@"photo.jpg");
+            EXP_expect(result.f1.size).to.equal(3);
+            EXP_expect(result.f1.type).to.equal(@"image/jpeg");
             
-            expect(result.f2).notTo.beNil;
-            expect(result.f2.fileName).to.equal(@"sound.mp3");
-            expect(result.f2.size).to.equal(7);
-            expect(result.f2.type).to.equal(@"audio/mpeg");
+            EXP_expect(result.f2).notTo.beNil;
+            EXP_expect(result.f2.fileName).to.equal(@"sound.mp3");
+            EXP_expect(result.f2.size).to.equal(7);
+            EXP_expect(result.f2.type).to.equal(@"audio/mpeg");
 
             done();
         }];
@@ -345,20 +345,20 @@ it(@"Date", ^{
         restClient.baseUrl = BASE_URL;
 
         [restClient post:@"echo" parameters:@{@"d":@"2014-11-25T10:30:05.010Z"} parser:[CraryRestClientMappingTestDateResult parser] complete:^(NSError *error, CraryRestClientMappingTestDateResult *result) {
-            expect(error).to.beNil;
-            expect(result).notTo.beNil;
+            EXP_expect(error).to.beNil;
+            EXP_expect(result).notTo.beNil;
             NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
             [calendar setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
             NSDateComponents *components = [calendar components:(NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSHourCalendarUnit|NSMinuteCalendarUnit|NSSecondCalendarUnit) fromDate:result.d];
-            expect(components.year).to.equal(2014);
-            expect(components.month).to.equal(11);
-            expect(components.day).to.equal(25);
-            expect(components.hour).to.equal(10);
-            expect(components.minute).to.equal(30);
-            expect(components.second).to.equal(5);
+            EXP_expect(components.year).to.equal(2014);
+            EXP_expect(components.month).to.equal(11);
+            EXP_expect(components.day).to.equal(25);
+            EXP_expect(components.hour).to.equal(10);
+            EXP_expect(components.minute).to.equal(30);
+            EXP_expect(components.second).to.equal(5);
             double time = [result.d timeIntervalSince1970]*1000;
             time = time - floor(time/1000)*1000;
-            expect(time).to.equal(10);
+            EXP_expect(time).to.equal(10);
             done();
         }];
     });

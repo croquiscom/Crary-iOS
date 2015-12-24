@@ -13,8 +13,8 @@ it(@"GET", ^{
         CraryRestClient *restClient = [CraryRestClient sharedClient];
         restClient.baseUrl = BASE_URL;
         [restClient get:@"ping" parameters:nil complete:^(NSError *error, id result) {
-            expect(result).to.beKindOf([NSDictionary class]);
-            expect([result count]).to.equal(0);
+            EXP_expect(result).to.beKindOf([NSDictionary class]);
+            EXP_expect([result count]).to.equal(0);
             done();
         }];
     });
@@ -26,9 +26,9 @@ it(@"GET with parameters", ^{
         restClient.baseUrl = BASE_URL;
         NSDictionary *parameters = @{@"message": @"hello"};
         [restClient get:@"ping" parameters:parameters complete:^(NSError *error, id result) {
-            expect(result).to.beKindOf([NSDictionary class]);
-            expect([result count]).to.equal(1);
-            expect(result[@"response"]).to.equal(@"hello");
+            EXP_expect(result).to.beKindOf([NSDictionary class]);
+            EXP_expect([result count]).to.equal(1);
+            EXP_expect(result[@"response"]).to.equal(@"hello");
             done();
         }];
     });
@@ -39,8 +39,8 @@ it(@"POST", ^{
         CraryRestClient *restClient = [CraryRestClient sharedClient];
         restClient.baseUrl = BASE_URL;
         [restClient post:@"ping" parameters:nil complete:^(NSError *error, id result) {
-            expect(result).to.beKindOf([NSDictionary class]);
-            expect([result count]).to.equal(0);
+            EXP_expect(result).to.beKindOf([NSDictionary class]);
+            EXP_expect([result count]).to.equal(0);
             done();
         }];
     });
@@ -52,9 +52,9 @@ it(@"POST with parameters", ^{
         restClient.baseUrl = BASE_URL;
         NSDictionary *parameters = @{@"message": @"hello"};
         [restClient post:@"ping" parameters:parameters complete:^(NSError *error, id result) {
-            expect(result).to.beKindOf([NSDictionary class]);
-            expect([result count]).to.equal(1);
-            expect(result[@"response"]).to.equal(@"hello");
+            EXP_expect(result).to.beKindOf([NSDictionary class]);
+            EXP_expect([result count]).to.equal(1);
+            EXP_expect(result[@"response"]).to.equal(@"hello");
             done();
         }];
     });
@@ -68,9 +68,9 @@ it(@"Session", ^{
         [restClient post:@"setData" parameters:parameters complete:^(NSError *error, id result) {
             restClient.baseUrl = BASE_URL;
             [restClient get:@"getData" parameters:nil complete:^(NSError *error, id result) {
-                expect(result).to.beKindOf([NSDictionary class]);
-                expect([result count]).to.equal(1);
-                expect(result[@"data"]).to.equal(@"croquis");
+                EXP_expect(result).to.beKindOf([NSDictionary class]);
+                EXP_expect([result count]).to.equal(1);
+                EXP_expect(result[@"data"]).to.equal(@"croquis");
                 done();
             }];
         }];
@@ -83,9 +83,9 @@ it(@"POST with gzipped parameters", ^{
         restClient.baseUrl = BASE_URL;
         NSDictionary *parameters = @{@"message": @"hello"};
         [restClient postGzip:@"ping" parameters:parameters complete:^(NSError *error, id result) {
-            expect(result).to.beKindOf([NSDictionary class]);
-            expect([result count]).to.equal(1);
-            expect(result[@"response"]).to.equal(@"hello");
+            EXP_expect(result).to.beKindOf([NSDictionary class]);
+            EXP_expect([result count]).to.equal(1);
+            EXP_expect(result[@"response"]).to.equal(@"hello");
             done();
         }];
     });
@@ -97,12 +97,12 @@ it(@"List with GET", ^{
         restClient.baseUrl = BASE_URL;
         NSDictionary *parameters = @{@"data":@[@"message", @(5), @(TRUE)]};
         [restClient post:@"echo" parameters:parameters complete:^(NSError *error, NSDictionary *result) {
-            expect(error).to.beNil;
-            expect(result).notTo.beNil;
+            EXP_expect(error).to.beNil;
+            EXP_expect(result).notTo.beNil;
             NSArray *data = result[@"data"];
-            expect(data[0]).to.equal(@"message");
-            expect(data[1]).to.equal(5);
-            expect(data[2]).to.equal(TRUE);
+            EXP_expect(data[0]).to.equal(@"message");
+            EXP_expect(data[1]).to.equal(5);
+            EXP_expect(data[2]).to.equal(TRUE);
             done();
         }];
     });
@@ -119,22 +119,22 @@ it(@"POST attachments", ^{
         CraryRestClientAttachment *attachment2 = [CraryRestClientAttachment newData:[NSData dataWithBytes:file2 length:7] name:@"f2" mimeType:@"audio/mpeg" fileName:@"sound.mp3"];
         NSArray *attachments = @[attachment1, attachment2];
         [restClient post:@"echo" parameters:parameters attachments:attachments complete:^(NSError *error, id result) {
-            expect(result).to.beKindOf([NSDictionary class]);
+            EXP_expect(result).to.beKindOf([NSDictionary class]);
 
-            expect([result count]).to.equal(5);
-            expect(result[@"a"]).to.equal(@"message");
-            expect([result[@"b"] integerValue]).to.equal(5);
+            EXP_expect([result count]).to.equal(5);
+            EXP_expect(result[@"a"]).to.equal(@"message");
+            EXP_expect([result[@"b"] integerValue]).to.equal(5);
 
-            expect(result[@"c"][@"d"]).to.equal(@"hello");
-            expect([result[@"c"][@"e"] integerValue]).to.equal(9);
+            EXP_expect(result[@"c"][@"d"]).to.equal(@"hello");
+            EXP_expect([result[@"c"][@"e"] integerValue]).to.equal(9);
 
-            expect(result[@"f1"][@"file_name"]).to.equal(@"photo.jpg");
-            expect(result[@"f1"][@"size"]).to.equal(3);
-            expect(result[@"f1"][@"type"]).to.equal(@"image/jpeg");
+            EXP_expect(result[@"f1"][@"file_name"]).to.equal(@"photo.jpg");
+            EXP_expect(result[@"f1"][@"size"]).to.equal(3);
+            EXP_expect(result[@"f1"][@"type"]).to.equal(@"image/jpeg");
 
-            expect(result[@"f2"][@"file_name"]).to.equal(@"sound.mp3");
-            expect(result[@"f2"][@"size"]).to.equal(7);
-            expect(result[@"f2"][@"type"]).to.equal(@"audio/mpeg");
+            EXP_expect(result[@"f2"][@"file_name"]).to.equal(@"sound.mp3");
+            EXP_expect(result[@"f2"][@"size"]).to.equal(7);
+            EXP_expect(result[@"f2"][@"type"]).to.equal(@"audio/mpeg");
 
             done();
         }];

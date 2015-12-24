@@ -23,12 +23,12 @@ SpecBegin(CraryIso9601DateFormat)
 
 it(@"parse", ^{
     NSDate *date = [CraryIso9601DateFormat parse:@"2014-11-25T10:30:05.010Z"];
-    expect([date timeIntervalSince1970]).to.equal([baseDate() timeIntervalSince1970]);
+    EXP_expect([date timeIntervalSince1970]).to.equal([baseDate() timeIntervalSince1970]);
 });
 
 it(@"format", ^{
     NSString *string = [CraryIso9601DateFormat format:baseDate()];
-    expect(string).to.equal(@"2014-11-25T10:30:05.010Z");
+    EXP_expect(string).to.equal(@"2014-11-25T10:30:05.010Z");
 });
 
 SpecEnd

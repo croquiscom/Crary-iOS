@@ -11,8 +11,8 @@ it(@"parent", ^{
         CraryRestClient *restClient = [CraryRestClient sharedClient];
         restClient.baseUrl = BASE_URL @"sub/";
         [restClient get:@"../ping" parameters:nil complete:^(NSError *error, id result) {
-            expect(result).to.beKindOf([NSDictionary class]);
-            expect([result count]).to.equal(0);
+            EXP_expect(result).to.beKindOf([NSDictionary class]);
+            EXP_expect([result count]).to.equal(0);
             done();
         }];
     });
@@ -23,8 +23,8 @@ it(@"absolute", ^{
         CraryRestClient *restClient = [CraryRestClient sharedClient];
         restClient.baseUrl = BASE_URL @"sub/";
         [restClient get:@"/ping" parameters:nil complete:^(NSError *error, id result) {
-            expect(result).to.beKindOf([NSDictionary class]);
-            expect([result count]).to.equal(0);
+            EXP_expect(result).to.beKindOf([NSDictionary class]);
+            EXP_expect([result count]).to.equal(0);
             done();
         }];
     });
@@ -35,8 +35,8 @@ it(@"full", ^{
         CraryRestClient *restClient = [CraryRestClient sharedClient];
         restClient.baseUrl = BASE_URL @"sub/";
         [restClient get:BASE_URL @"ping" parameters:nil complete:^(NSError *error, id result) {
-            expect(result).to.beKindOf([NSDictionary class]);
-            expect([result count]).to.equal(0);
+            EXP_expect(result).to.beKindOf([NSDictionary class]);
+            EXP_expect([result count]).to.equal(0);
             done();
         }];
     });
