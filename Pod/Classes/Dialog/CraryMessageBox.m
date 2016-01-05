@@ -28,6 +28,9 @@
 
 @implementation CraryMessageBox
 
+//----------------------------------------
+#pragma mark - alert
+
 + (void)alert:(NSString *)message
 {
     [self alert:message done:nil];
@@ -46,13 +49,47 @@
 
 + (void)alert:(NSString *)message title:(NSString *)title done:(void (^)())done
 {
-    UIAlertView *alert = [[CraryMessageBoxAlertView alloc] initWithTitle:title message:message cancelButtonTitle:_T(@"OK") otherButtonTitles:@[] done:^(NSInteger index) {
-        if (done) {
-            done();
-        }
-    }];
-    [alert show];
+    UIViewController *vc = [UIApplication sharedApplication].keyWindow.rootViewController;
+    [self alert:vc message:message title:title done:done];
 }
+
+//----------------------------------------
+#pragma mark - alert with ViewController
+
++ (void)alert:(UIViewController *)vc message:(NSString *)message {
+    [self alert:vc message:message done:nil];
+}
+
++ (void)alert:(UIViewController *)vc message:(NSString *)message done:(void (^)())done {
+    NSString *title = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"];
+    [self alert:vc message:message title:title done:done];
+}
+
++ (void)alert:(UIViewController *)vc message:(NSString *)message title:(NSString *)title {
+    [self alert:vc message:message title:title done:nil];
+}
+
++ (void)alert:(UIViewController *)vc message:(NSString *)message title:(NSString *)title done:(void (^)())done {
+    if ([UIAlertController class]) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:_T(@"OK") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            if (done) {
+                done();
+            }
+        }]];
+        [vc presentViewController:alert animated:YES completion:nil];
+    } else {
+        UIAlertView *alert = [[CraryMessageBoxAlertView alloc] initWithTitle:title message:message cancelButtonTitle:_T(@"OK") otherButtonTitles:@[] done:^(NSInteger index) {
+            if (done) {
+                done();
+            }
+        }];
+        [alert show];
+    }
+}
+
+//----------------------------------------
+#pragma mark - confirm
 
 + (void)confirm:(NSString *)message yes:(NSString *)yes no:(NSString *)no done:(void (^)(BOOL yes_selected))done
 {
@@ -62,12 +99,8 @@
 
 + (void)confirm:(NSString *)message title:(NSString *)title yes:(NSString *)yes no:(NSString *)no done:(void (^)(BOOL yes_selected))done
 {
-    UIAlertView *alert = [[CraryMessageBoxAlertView alloc] initWithTitle:title message:message cancelButtonTitle:no otherButtonTitles:@[yes] done:^(NSInteger index) {
-        if (done) {
-            done(index==1);
-        }
-    }];
-    [alert show];
+    UIViewController *vc = [UIApplication sharedApplication].keyWindow.rootViewController;
+    [self confirm:vc message:message title:title yes:yes no:no done:done];
 }
 
 + (void)confirmOkCancel:(NSString *)message done:(void (^)(BOOL yes_selected))done
@@ -88,6 +121,60 @@
 + (void)confirmYesNo:(NSString *)message title:(NSString *)title done:(void (^)(BOOL yes_selected))done
 {
     [self confirm:message title:title yes:_T(@"Yes") no:_T(@"No") done:done];
+}
+
+//----------------------------------------
+#pragma mark - confirm with ViewController
+
++ (void)confirm:(UIViewController *)vc message:(NSString *)message yes:(NSString *)yes no:(NSString *)no done:(void (^)(BOOL yes_selected))done
+{
+    NSString *title = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"];
+    [self confirm:vc message:message title:title yes:yes no:no done:done];
+}
+
++ (void)confirm:(UIViewController *)vc message:(NSString *)message title:(NSString *)title yes:(NSString *)yes no:(NSString *)no done:(void (^)(BOOL yes_selected))done
+{
+    if ([UIAlertController class]) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:yes style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            if (done) {
+                done(YES);
+            }
+        }]];
+        [alert addAction:[UIAlertAction actionWithTitle:no style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            if (done) {
+                done(NO);
+            }
+        }]];
+        [vc presentViewController:alert animated:YES completion:nil];
+    } else {
+        UIAlertView *alert = [[CraryMessageBoxAlertView alloc] initWithTitle:title message:message cancelButtonTitle:no otherButtonTitles:@[yes] done:^(NSInteger index) {
+            if (done) {
+                done(index==1);
+            }
+        }];
+        [alert show];
+    }
+}
+
++ (void)confirmOkCancel:(UIViewController *)vc message:(NSString *)message done:(void (^)(BOOL yes_selected))done
+{
+    [self confirm:vc message:message yes:_T(@"OK") no:_T(@"Cancel") done:done];
+}
+
++ (void)confirmOkCancel:(UIViewController *)vc message:(NSString *)message title:(NSString *)title done:(void (^)(BOOL yes_selected))done
+{
+    [self confirm:vc message:message title:title yes:_T(@"OK") no:_T(@"Cancel") done:done];
+}
+
++ (void)confirmYesNo:(UIViewController *)vc message:(NSString *)message done:(void (^)(BOOL yes_selected))done
+{
+    [self confirm:vc message:message yes:_T(@"Yes") no:_T(@"No") done:done];
+}
+
++ (void)confirmYesNo:(UIViewController *)vc message:(NSString *)message title:(NSString *)title done:(void (^)(BOOL yes_selected))done
+{
+    [self confirm:vc message:message title:title yes:_T(@"Yes") no:_T(@"No") done:done];
 }
 
 @end
