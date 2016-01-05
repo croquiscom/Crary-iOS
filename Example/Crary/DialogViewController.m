@@ -35,7 +35,7 @@
 - (IBAction)onShowSelectItem:(id)sender
 {
     NSArray *items = @[@"foo", @"bar", @"baz"];
-    [CraryInputDialog selectSingle:self.view items:items done:^(NSInteger buttonIndex) {
+    [CraryInputDialog selectSingle:sender items:items done:^(NSInteger buttonIndex) {
         if (buttonIndex >= items.count) {
             return;
         }

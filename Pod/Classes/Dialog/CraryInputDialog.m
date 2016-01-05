@@ -38,6 +38,6 @@
 + (void)selectSingle:(UIView *)view items:(NSArray *)items done:(void (^)(NSInteger))done
 {
     CraryInputDialogActionSheet *actionSheet = [[CraryInputDialogActionSheet alloc] initWithTitle:nil cancelButtonTitle:_T(@"Cancel") otherButtonTitles:items done:done];
-    [actionSheet showInView:view];
+    [actionSheet showFromRect:view.bounds inView:view animated:YES];
 }
 @end
