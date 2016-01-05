@@ -3,12 +3,10 @@
 
 @interface CraryInputDialogActionSheet : UIActionSheet <UIActionSheetDelegate>
 @property (nonatomic, copy) void (^done)(NSInteger buttonIndex);
-- (instancetype)initWithTitle:(NSString *)title cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitles:(NSArray *)otherButtonTitles done:(void(^)(NSInteger buttonIndex))done;
-
 @end
 
 @implementation CraryInputDialogActionSheet
-- (instancetype)initWithTitle:(NSString *)title cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitles:(NSArray *)otherButtonTitles done:(void(^)(NSInteger buttonIndex))done
+- (instancetype)initWithTitle:(NSString *)title cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitles:(NSArray<NSString *> *)otherButtonTitles done:(void(^)(NSInteger buttonIndex))done
 {
     self = [super initWithTitle:title delegate:nil cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
     if (self) {
@@ -34,13 +32,13 @@
 
 @implementation CraryInputDialog
 
-+ (void)selectSingle:(UIView *)view items:(NSArray *)items done:(void (^)(NSInteger))done
++ (void)selectSingle:(UIView *)view items:(NSArray<NSString *> *)items done:(void (^)(NSInteger))done
 {
     UIViewController *vc = [UIApplication sharedApplication].keyWindow.rootViewController;
     [self selectSingle:vc inView:view items:items done:done];
 }
 
-+ (void)selectSingle:(UIViewController *)vc inView:(UIView *)view items:(NSArray *)items done:(void(^)(NSInteger buttonIndex))done {
++ (void)selectSingle:(UIViewController *)vc inView:(UIView *)view items:(NSArray<NSString *> *)items done:(void(^)(NSInteger buttonIndex))done {
     if ([UIAlertController class]) {
         UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
         for (NSUInteger i = 0 ; i < items.count ; i++ ) {

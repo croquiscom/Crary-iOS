@@ -46,7 +46,7 @@
     [self.requestManager setRequestSerializer:requestSerializer];
 }
 
-- (void)_request:(NSString *)method path:(NSString *)path parameters:(id)parameters attachments:(NSArray *)attachments complete:(OnTaskComplete)complete
+- (void)_request:(NSString *)method path:(NSString *)path parameters:(id)parameters attachments:(NSArray<CraryRestClientAttachment *> *)attachments complete:(OnTaskComplete)complete
 {
     if (!self.requestManager) {
         [self _createRequestManager];
@@ -87,7 +87,7 @@
     [self _request:@"POST" path:path parameters:parameters attachments:nil complete:complete];
 }
 
-- (void)post:(NSString *)path parameters:(id)parameters attachments:(NSArray *)attachments complete:(OnTaskComplete)complete
+- (void)post:(NSString *)path parameters:(id)parameters attachments:(NSArray<CraryRestClientAttachment *> *)attachments complete:(OnTaskComplete)complete
 {
     [self _request:@"POST" path:path parameters:parameters attachments:attachments complete:complete];
 }
@@ -97,7 +97,7 @@
     [self _request:@"PUT" path:path parameters:parameters attachments:nil complete:complete];
 }
 
-- (void)put:(NSString *)path parameters:(id)parameters attachments:(NSArray *)attachments complete:(OnTaskComplete)complete
+- (void)put:(NSString *)path parameters:(id)parameters attachments:(NSArray<CraryRestClientAttachment *> *)attachments complete:(OnTaskComplete)complete
 {
     [self _request:@"PUT" path:path parameters:parameters attachments:attachments complete:complete];
 }
@@ -142,7 +142,7 @@
     }];
 }
 
-- (void)post:(NSString *)path parameters:(id)parameters attachments:(NSArray *)attachments parser:(DCKeyValueObjectMapping *)parser complete:(OnTaskComplete)complete
+- (void)post:(NSString *)path parameters:(id)parameters attachments:(NSArray<CraryRestClientAttachment *> *)attachments parser:(DCKeyValueObjectMapping *)parser complete:(OnTaskComplete)complete
 {
     [self post:path parameters:parameters attachments:attachments complete:^(NSError *error, id result) {
         if (complete != nil) {
@@ -166,7 +166,7 @@
     }];
 }
 
-- (void)put:(NSString *)path parameters:(id)parameters attachments:(NSArray *)attachments parser:(DCKeyValueObjectMapping *)parser complete:(OnTaskComplete)complete
+- (void)put:(NSString *)path parameters:(id)parameters attachments:(NSArray<CraryRestClientAttachment *> *)attachments parser:(DCKeyValueObjectMapping *)parser complete:(OnTaskComplete)complete
 {
     [self put:path parameters:parameters attachments:attachments complete:^(NSError *error, id result) {
         if (complete != nil) {
