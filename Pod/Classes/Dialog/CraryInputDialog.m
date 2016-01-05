@@ -24,7 +24,6 @@
     return self;
 }
 
-#pragma mark - actionsheet delegate
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (self.done) {
@@ -37,7 +36,29 @@
 
 + (void)selectSingle:(UIView *)view items:(NSArray *)items done:(void (^)(NSInteger))done
 {
-    CraryInputDialogActionSheet *actionSheet = [[CraryInputDialogActionSheet alloc] initWithTitle:nil cancelButtonTitle:_T(@"Cancel") otherButtonTitles:items done:done];
-    [actionSheet showFromRect:view.bounds inView:view animated:YES];
+    UIViewController *vc = [UIApplication sharedApplication].keyWindow.rootViewController;
+    [self selectSingle:vc inView:view items:items done:done];
 }
+
++ (void)selectSingle:(UIViewController *)vc inView:(UIView *)view items:(NSArray *)items done:(void(^)(NSInteger buttonIndex))done {
+    if ([UIAlertController class]) {
+        UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+        for (NSUInteger i = 0 ; i < items.count ; i++ ) {
+            NSString *title = items[i];
+            [actionSheet addAction:[UIAlertAction actionWithTitle:title style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                if (done) {
+                    done(i);
+                }
+            }]];
+        }
+        [actionSheet addAction:[UIAlertAction actionWithTitle:_T(@"Cancel") style:UIAlertActionStyleCancel handler:nil]];
+        [actionSheet popoverPresentationController].sourceRect = view.bounds;
+        [actionSheet popoverPresentationController].sourceView = view;
+        [vc presentViewController:actionSheet animated:YES completion:nil];
+    } else {
+        CraryInputDialogActionSheet *actionSheet = [[CraryInputDialogActionSheet alloc] initWithTitle:nil cancelButtonTitle:_T(@"Cancel") otherButtonTitles:items done:done];
+        [actionSheet showFromRect:view.bounds inView:view animated:YES];
+    }
+}
+
 @end
