@@ -1,10 +1,10 @@
 #import <Foundation/Foundation.h>
-#import "AFHTTPRequestOperationManager.h"
+#import "AFHTTPSessionManager.h"
 
 @interface CraryRestClient ()
 
-@property (nonatomic, strong) AFHTTPRequestOperationManager *requestManager;
-@property (nonatomic, strong) AFHTTPRequestOperationManager *requestManagerGzip;
+@property (nonatomic, strong) AFHTTPSessionManager *sessionManager;
+@property (nonatomic, strong) AFHTTPSessionManager *sessionManagerGzip;
 
 - (id)_parse:(id)result using:(DCKeyValueObjectMapping *)parser;
 
