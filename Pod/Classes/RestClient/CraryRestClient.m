@@ -1,6 +1,6 @@
 #import "CraryRestClient.h"
 #import "CraryRestClient+Private.h"
-#import "AFHTTPRequestOperationManager.h"
+#import "AFHTTPSessionManager.h"
 #import "CraryRestClientAttachment.h"
 #import <DCKeyValueObjectMapping/DCKeyValueObjectMapping.h>
 
@@ -30,51 +30,46 @@
 - (void)setBaseUrl:(NSString *)baseUrl
 {
     _baseUrl = baseUrl;
-    if (self.requestManager) {
-        self.requestManager = nil;
+    if (self.sessionManager) {
+        self.sessionManager = nil;
     }
 }
 
-- (void)_createRequestManager {
-    self.requestManager = [AFHTTPRequestOperationManager manager];
+- (void)_createSessionManager {
+    self.sessionManager = [AFHTTPSessionManager manager];
     
     AFHTTPRequestSerializer<AFURLRequestSerialization> *requestSerializer = [AFJSONRequestSerializer serializer];
     [requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     
-    [self.requestManager setResponseSerializer:[AFJSONResponseSerializer serializer]];
-    [self.requestManager setRequestSerializer:requestSerializer];
+    [self.sessionManager setResponseSerializer:[AFJSONResponseSerializer serializer]];
+    [self.sessionManager setRequestSerializer:requestSerializer];
 }
 
 - (void)_request:(NSString *)method path:(NSString *)path parameters:(id)parameters attachments:(NSArray<CraryRestClientAttachment *> *)attachments complete:(OnTaskComplete)complete
 {
-    if (!self.requestManager) {
-        [self _createRequestManager];
+    if (!self.sessionManager) {
+        [self _createSessionManager];
     }
 
     NSMutableURLRequest *request;
     NSURL *url = [NSURL URLWithString:path relativeToURL:[NSURL URLWithString:self.baseUrl]];
     if ([attachments count]==0) {
-        request = [self.requestManager.requestSerializer requestWithMethod:method URLString:[url absoluteString] parameters:parameters error:nil];
+        request = [self.sessionManager.requestSerializer requestWithMethod:method URLString:[url absoluteString] parameters:parameters error:nil];
     } else {
-        request = [self.requestManager.requestSerializer multipartFormRequestWithMethod:method URLString:[url absoluteString] parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        request = [self.sessionManager.requestSerializer multipartFormRequestWithMethod:method URLString:[url absoluteString] parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
             for (CraryRestClientAttachment *attachment in attachments) {
                 [formData appendPartWithFileData:attachment.data name:attachment.name fileName:attachment.fileName mimeType:attachment.mimeType];
             }
         } error:nil];
     }
     [request setTimeoutInterval:self.timeoutInterval];
-
-    AFHTTPRequestOperation *operation = [self.requestManager HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        if(complete != nil) {
-            complete(nil, responseObject);
+    
+    [[self.sessionManager dataTaskWithRequest:request completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+        if (complete != nil) {
+            complete(error, responseObject);
         }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        if(complete != nil) {
-            complete(error, nil);
-        }
-    }];
-    [self.requestManager.operationQueue addOperation:operation];
+    }] resume];
 }
 
 - (void)get:(NSString *)path parameters:(id)parameters complete:(OnTaskComplete)complete

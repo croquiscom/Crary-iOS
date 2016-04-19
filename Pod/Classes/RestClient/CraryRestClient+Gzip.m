@@ -4,16 +4,16 @@
 
 @implementation CraryRestClient (Gzip)
 
-- (void)_createRequestManagerGzip
+- (void)_createSessionManagerGzip
 {
-    self.requestManagerGzip = [AFHTTPRequestOperationManager manager];
+    self.sessionManagerGzip = [AFHTTPSessionManager manager];
     AFHTTPRequestSerializer<AFURLRequestSerialization> *requestSerializer = [AFJSONRequestSerializer serializer];
     [requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [requestSerializer setValue:@"gzip" forHTTPHeaderField:@"Content-Encoding"];
 
-    [self.requestManagerGzip setResponseSerializer:[AFJSONResponseSerializer serializer]];
-    [self.requestManagerGzip setRequestSerializer:requestSerializer];
+    [self.sessionManagerGzip setResponseSerializer:[AFJSONResponseSerializer serializer]];
+    [self.sessionManagerGzip setRequestSerializer:requestSerializer];
     
 }
 
@@ -55,25 +55,20 @@ static NSData *deflateGzip(NSData *data)
 
 - (void)postGzip:(NSString *)path parameters:(id)parameters complete:(OnTaskComplete)complete
 {
-    if (!self.requestManagerGzip) {
-        [self _createRequestManagerGzip];
+    if (!self.sessionManagerGzip) {
+        [self _createSessionManagerGzip];
     }
 
     NSData *data = [NSJSONSerialization dataWithJSONObject:parameters options:0 error:NULL];
     data = deflateGzip(data);
     
-    NSMutableURLRequest *request = [self.requestManagerGzip.requestSerializer requestWithMethod:@"POST" URLString:[NSString stringWithFormat:@"%@%@", self.baseUrl, path] parameters:parameters error:nil];
+    NSMutableURLRequest *request = [self.sessionManagerGzip.requestSerializer requestWithMethod:@"POST" URLString:[NSString stringWithFormat:@"%@%@", self.baseUrl, path] parameters:parameters error:nil];
     [request setHTTPBody:data];
-    AFHTTPRequestOperation *operation = [self.requestManagerGzip HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        if(complete != nil) {
-            complete(nil, responseObject);
+    [[self.sessionManagerGzip dataTaskWithRequest:request completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+        if (complete != nil) {
+            complete(error, responseObject);
         }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        if(complete != nil) {
-            complete(error, nil);
-        }
-    }];
-    [self.requestManagerGzip.operationQueue addOperation:operation];
+    }] resume];
 }
 
 - (void)postGzip:(NSString *)path parameters:(id)parameters parser:(DCKeyValueObjectMapping *)parser complete:(OnTaskComplete)complete
