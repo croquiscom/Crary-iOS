@@ -32,7 +32,7 @@ Pod::Spec.new do |s|
     ss.private_header_files = 'Pod/Classes/RestClient/CraryRestClient+Private.h'
     ss.source_files = 'Pod/Classes/RestClient/*.{h,m}', 'Pod/Classes/RestClient/*.swift'
     ss.dependency 'Crary/Util'
-    ss.dependency 'AFNetworking', '~> 2.0'
+    ss.dependency 'AFNetworking'
     ss.dependency 'DCKeyValueObjectMapping'
     ss.dependency 'ObjectMapper'
     ss.ios.library = 'z'
