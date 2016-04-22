@@ -1,39 +1,33 @@
 PODS:
-  - AFNetworking (2.6.3):
-    - AFNetworking/NSURLConnection (= 2.6.3)
-    - AFNetworking/NSURLSession (= 2.6.3)
-    - AFNetworking/Reachability (= 2.6.3)
-    - AFNetworking/Security (= 2.6.3)
-    - AFNetworking/Serialization (= 2.6.3)
-    - AFNetworking/UIKit (= 2.6.3)
-  - AFNetworking/NSURLConnection (2.6.3):
+  - AFNetworking (3.1.0):
+    - AFNetworking/NSURLSession (= 3.1.0)
+    - AFNetworking/Reachability (= 3.1.0)
+    - AFNetworking/Security (= 3.1.0)
+    - AFNetworking/Serialization (= 3.1.0)
+    - AFNetworking/UIKit (= 3.1.0)
+  - AFNetworking/NSURLSession (3.1.0):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/NSURLSession (2.6.3):
-    - AFNetworking/Reachability
-    - AFNetworking/Security
-    - AFNetworking/Serialization
-  - AFNetworking/Reachability (2.6.3)
-  - AFNetworking/Security (2.6.3)
-  - AFNetworking/Serialization (2.6.3)
-  - AFNetworking/UIKit (2.6.3):
-    - AFNetworking/NSURLConnection
+  - AFNetworking/Reachability (3.1.0)
+  - AFNetworking/Security (3.1.0)
+  - AFNetworking/Serialization (3.1.0)
+  - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
-  - Crary (0.4.0):
-    - Crary/Dialog (= 0.4.0)
-    - Crary/RestClient (= 0.4.0)
-    - Crary/Util (= 0.4.0)
-  - Crary/Dialog (0.4.0)
-  - Crary/RestClient (0.4.0):
-    - AFNetworking (~> 2.0)
+  - Crary (0.5.0):
+    - Crary/Dialog (= 0.5.0)
+    - Crary/RestClient (= 0.5.0)
+    - Crary/Util (= 0.5.0)
+  - Crary/Dialog (0.5.0)
+  - Crary/RestClient (0.5.0):
+    - AFNetworking
     - Crary/Util
     - DCKeyValueObjectMapping
     - ObjectMapper
-  - Crary/Util (0.4.0)
+  - Crary/Util (0.5.0)
   - DCKeyValueObjectMapping (1.5)
   - Expecta (0.3.1)
-  - ObjectMapper (1.1.0)
+  - ObjectMapper (1.2.0)
   - Specta (1.0.4)
 
 DEPENDENCIES:
@@ -46,11 +40,11 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
-  Crary: b9a839b3cd6a276ff400810431f43bf03a3e4387
+  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  Crary: bb324b0fce054984e247b85dabe088554b85effd
   DCKeyValueObjectMapping: c2eb5a6529da100b2e49ef6a599663578051f077
   Expecta: a354d4633409dd9fe8c4f5ff5130426adbe31628
-  ObjectMapper: 365eac5aac06ae9298978fb2482b3d4c5ef4bb5d
+  ObjectMapper: b1e9c7c8a9f6400b72690c80072c131504caa66f
   Specta: 69bb134672aae190a1379ff91df07dad8dd1f869
 
 COCOAPODS: 0.39.0
