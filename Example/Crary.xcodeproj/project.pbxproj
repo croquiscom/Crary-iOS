@@ -11,14 +11,11 @@
 		135F485B1A25C7B400DBF90C /* CraryRestClientMappingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 135F48561A25C7B400DBF90C /* CraryRestClientMappingTest.m */; };
 		135F485C1A25C7B400DBF90C /* CraryRestClientTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 135F48571A25C7B400DBF90C /* CraryRestClientTest.m */; };
 		135F485D1A25C7B400DBF90C /* CraryIso8601DateFormatTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 135F48591A25C7B400DBF90C /* CraryIso8601DateFormatTest.m */; };
-		1377B4DD1C2BB57500E8FD27 /* CraryRestClientMappingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1377B4DC1C2BB57500E8FD27 /* CraryRestClientMappingTest.swift */; };
 		139B51511A3550B1002D0C2A /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 139B51501A3550B1002D0C2A /* MainViewController.m */; };
 		139B51591A357F8F002D0C2A /* CrarySimpleMarkupTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 139B51581A357F8F002D0C2A /* CrarySimpleMarkupTest.m */; };
 		13DB8B391BDE0169004D480A /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13DB8B381BDE0169004D480A /* Launch Screen.storyboard */; };
 		13DB8B3B1BDE036A004D480A /* CraryRestClientResolveTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 13DB8B3A1BDE036A004D480A /* CraryRestClientResolveTest.m */; };
-		13F277521CC9D503007766E4 /* DictionaryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F277511CC9D503007766E4 /* DictionaryTest.swift */; };
-		1803485F420ADF5BF63AD5C9 /* Pods_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0E609A526C8AB31F3842B72 /* Pods_Tests.framework */; };
-		5BB5A97EE1DCC92DBAB1CACD /* Pods_Crary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAF7CF6DB7C6C310F847E3BA /* Pods_Crary.framework */; };
+		3C855CC4E0E70872DF44CE52 /* libPods-Crary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3964A52D5638FC9381E4602F /* libPods-Crary.a */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -32,6 +29,7 @@
 		6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
+		9793FD8F5A93273A6495B6F1 /* libPods-Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DAECA18BAB8E3CC8E61476C1 /* libPods-Tests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,13 +49,12 @@
 		135F48561A25C7B400DBF90C /* CraryRestClientMappingTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CraryRestClientMappingTest.m; sourceTree = "<group>"; };
 		135F48571A25C7B400DBF90C /* CraryRestClientTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CraryRestClientTest.m; sourceTree = "<group>"; };
 		135F48591A25C7B400DBF90C /* CraryIso8601DateFormatTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CraryIso8601DateFormatTest.m; sourceTree = "<group>"; };
-		1377B4DC1C2BB57500E8FD27 /* CraryRestClientMappingTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CraryRestClientMappingTest.swift; sourceTree = "<group>"; };
 		139B514F1A3550B1002D0C2A /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		139B51501A3550B1002D0C2A /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		139B51581A357F8F002D0C2A /* CrarySimpleMarkupTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CrarySimpleMarkupTest.m; sourceTree = "<group>"; };
 		13DB8B381BDE0169004D480A /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		13DB8B3A1BDE036A004D480A /* CraryRestClientResolveTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CraryRestClientResolveTest.m; sourceTree = "<group>"; };
-		13F277511CC9D503007766E4 /* DictionaryTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryTest.swift; sourceTree = "<group>"; };
+		3964A52D5638FC9381E4602F /* libPods-Crary.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Crary.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E2D50FFA37C26009F4E08E3 /* Pods-Crary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Crary.release.xcconfig"; path = "Pods/Target Support Files/Pods-Crary/Pods-Crary.release.xcconfig"; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* Crary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Crary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -81,9 +78,8 @@
 		ACA5A6707D6D4022AF04DD66 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		B91AF014D54D7C7CEC979B47 /* Pods-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		CA8452A4FB8A424AA33C8CAF /* Crary.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Crary.podspec; path = ../Crary.podspec; sourceTree = "<group>"; };
-		CAF7CF6DB7C6C310F847E3BA /* Pods_Crary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Crary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DAECA18BAB8E3CC8E61476C1 /* libPods-Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E083B7F447DC4C3B9A006DC0 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		F0E609A526C8AB31F3842B72 /* Pods_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,7 +90,7 @@
 				6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */,
 				6003F592195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F58E195388D20070C39A /* Foundation.framework in Frameworks */,
-				5BB5A97EE1DCC92DBAB1CACD /* Pods_Crary.framework in Frameworks */,
+				3C855CC4E0E70872DF44CE52 /* libPods-Crary.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,7 +101,7 @@
 				6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */,
 				6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */,
-				1803485F420ADF5BF63AD5C9 /* Pods_Tests.framework in Frameworks */,
+				9793FD8F5A93273A6495B6F1 /* libPods-Tests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,7 +120,6 @@
 			isa = PBXGroup;
 			children = (
 				135F48561A25C7B400DBF90C /* CraryRestClientMappingTest.m */,
-				1377B4DC1C2BB57500E8FD27 /* CraryRestClientMappingTest.swift */,
 				13DB8B3A1BDE036A004D480A /* CraryRestClientResolveTest.m */,
 				135F48571A25C7B400DBF90C /* CraryRestClientTest.m */,
 			);
@@ -136,7 +131,6 @@
 			children = (
 				135F48591A25C7B400DBF90C /* CraryIso8601DateFormatTest.m */,
 				139B51581A357F8F002D0C2A /* CrarySimpleMarkupTest.m */,
-				13F277511CC9D503007766E4 /* DictionaryTest.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -169,8 +163,8 @@
 				6003F58F195388D20070C39A /* CoreGraphics.framework */,
 				6003F591195388D20070C39A /* UIKit.framework */,
 				6003F5AF195388D20070C39A /* XCTest.framework */,
-				CAF7CF6DB7C6C310F847E3BA /* Pods_Crary.framework */,
-				F0E609A526C8AB31F3842B72 /* Pods_Tests.framework */,
+				3964A52D5638FC9381E4602F /* libPods-Crary.a */,
+				DAECA18BAB8E3CC8E61476C1 /* libPods-Tests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -257,7 +251,6 @@
 				6003F587195388D20070C39A /* Frameworks */,
 				6003F588195388D20070C39A /* Resources */,
 				4C6FFD534C934468974C1011 /* Copy Pods Resources */,
-				E4E9D4C0272F4438FA5BEFBE /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -277,7 +270,6 @@
 				6003F5AB195388D20070C39A /* Frameworks */,
 				6003F5AC195388D20070C39A /* Resources */,
 				DCB1E17B46084E25B6BBFEE0 /* Copy Pods Resources */,
-				BF707A48EE318F9E5F83A6F7 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -392,21 +384,6 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		BF707A48EE318F9E5F83A6F7 /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Tests/Pods-Tests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		DCB1E17B46084E25B6BBFEE0 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -420,21 +397,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Tests/Pods-Tests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E4E9D4C0272F4438FA5BEFBE /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Crary/Pods-Crary-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -455,12 +417,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1377B4DD1C2BB57500E8FD27 /* CraryRestClientMappingTest.swift in Sources */,
 				135F485C1A25C7B400DBF90C /* CraryRestClientTest.m in Sources */,
 				13DB8B3B1BDE036A004D480A /* CraryRestClientResolveTest.m in Sources */,
 				135F485A1A25C7B400DBF90C /* CraryMessageBoxTest.m in Sources */,
 				135F485D1A25C7B400DBF90C /* CraryIso8601DateFormatTest.m in Sources */,
-				13F277521CC9D503007766E4 /* DictionaryTest.swift in Sources */,
 				135F485B1A25C7B400DBF90C /* CraryRestClientMappingTest.m in Sources */,
 				139B51591A357F8F002D0C2A /* CrarySimpleMarkupTest.m in Sources */,
 			);
