@@ -1,10 +1,10 @@
-target 'Crary', :exclusive => true do
+target 'Crary' do
   platform :ios, '8.0'
   use_frameworks!
   pod "Crary", :path => "../"
 end
 
-target 'Tests', :exclusive => true do
+target 'Tests' do
   platform :ios, '8.0'
   use_frameworks!
   pod "Crary", :path => "../"
