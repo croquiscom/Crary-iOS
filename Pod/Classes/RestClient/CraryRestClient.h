@@ -8,24 +8,24 @@
 
 @interface CraryRestClient : NSObject
 
-@property (nonatomic, strong) NSString *baseUrl;
+@property (nonatomic, strong, nonnull) NSString *baseUrl;
 @property NSTimeInterval timeoutInterval;
 
-+ (CraryRestClient *)sharedClient;
++ (nonnull CraryRestClient *)sharedClient;
 
-- (void)get:(NSString *)path parameters:(id)parameters complete:(OnTaskComplete)complete;
-- (void)post:(NSString *)path parameters:(id)parameters complete:(OnTaskComplete)complete;
-- (void)post:(NSString *)path parameters:(id)parameters attachments:(NSArray<CraryRestClientAttachment *> *)attachments complete:(OnTaskComplete)complete;
-- (void)put:(NSString *)path parameters:(id)parameters complete:(OnTaskComplete)complete;
-- (void)put:(NSString *)path parameters:(id)parameters attachments:(NSArray<CraryRestClientAttachment *> *)attachments complete:(OnTaskComplete)complete;
-- (void)delete:(NSString *)path parameters:(id)parameters complete:(OnTaskComplete)complete;
+- (void)get:(nonnull NSString *)path parameters:(nullable id)parameters complete:(nullable OnTaskComplete)complete;
+- (void)post:(nonnull NSString *)path parameters:(nullable id)parameters complete:(nullable OnTaskComplete)complete;
+- (void)post:(nonnull NSString *)path parameters:(nullable id)parameters attachments:(nullable NSArray<CraryRestClientAttachment *> *)attachments complete:(nullable OnTaskComplete)complete;
+- (void)put:(nonnull NSString *)path parameters:(nullable id)parameters complete:(nullable OnTaskComplete)complete;
+- (void)put:(nonnull NSString *)path parameters:(nullable id)parameters attachments:(nullable NSArray<CraryRestClientAttachment *> *)attachments complete:(nullable OnTaskComplete)complete;
+- (void)delete:(nonnull NSString *)path parameters:(nullable id)parameters complete:(nullable OnTaskComplete)complete;
 
 // methods for object mapping
-- (void)get:(NSString *)path parameters:(id)parameters parser:(DCKeyValueObjectMapping *)parser complete:(OnTaskComplete)complete;
-- (void)post:(NSString *)path parameters:(id)parameters parser:(DCKeyValueObjectMapping *)parser complete:(OnTaskComplete)complete;
-- (void)post:(NSString *)path parameters:(id)parameters attachments:(NSArray<CraryRestClientAttachment *> *)attachments parser:(DCKeyValueObjectMapping *)parser complete:(OnTaskComplete)complete;
-- (void)put:(NSString *)path parameters:(id)parameters parser:(DCKeyValueObjectMapping *)parser complete:(OnTaskComplete)complete;
-- (void)put:(NSString *)path parameters:(id)parameters attachments:(NSArray<CraryRestClientAttachment *> *)attachments parser:(DCKeyValueObjectMapping *)parser complete:(OnTaskComplete)complete;
-- (void)delete:(NSString *)path parameters:(id)parameters parser:(DCKeyValueObjectMapping *)parser complete:(OnTaskComplete)complete;
+- (void)get:(nonnull NSString *)path parameters:(nullable id)parameters parser:(nullable DCKeyValueObjectMapping *)parser complete:(nullable OnTaskComplete)complete;
+- (void)post:(nonnull NSString *)path parameters:(nullable id)parameters parser:(nullable DCKeyValueObjectMapping *)parser complete:(nullable OnTaskComplete)complete;
+- (void)post:(nonnull NSString *)path parameters:(nullable id)parameters attachments:(nullable NSArray<CraryRestClientAttachment *> *)attachments parser:(nullable DCKeyValueObjectMapping *)parser complete:(nullable OnTaskComplete)complete;
+- (void)put:(nonnull NSString *)path parameters:(nullable id)parameters parser:(nullable DCKeyValueObjectMapping *)parser complete:(nullable OnTaskComplete)complete;
+- (void)put:(nonnull NSString *)path parameters:(nullable id)parameters attachments:(nullable NSArray<CraryRestClientAttachment *> *)attachments parser:(nullable DCKeyValueObjectMapping *)parser complete:(nullable OnTaskComplete)complete;
+- (void)delete:(nonnull NSString *)path parameters:(nullable id)parameters parser:(nullable DCKeyValueObjectMapping *)parser complete:(nullable OnTaskComplete)complete;
 
 @end

@@ -39,7 +39,7 @@ describe(@"bold", ^{
         NSDictionary *attrs;
         attrs = _checkAttributes(self, str, 0, 0, 10, 0);
         attrs = _checkAttributes(self, str, 10, 10, 4, 1);
-        _checkFont(self, attrs, @"AppleSDGothicNeo-SemiBold", 14);
+        _checkFont(self, attrs, @"AppleSDGothicNeo-Bold", 14);
         attrs = _checkAttributes(self, str, 14, 14, 5, 0);
     });
 
@@ -86,13 +86,13 @@ describe(@"bold", ^{
         NSDictionary *attrs;
         attrs = _checkAttributes(self, str, 0, 0, 4, 0);
         attrs = _checkAttributes(self, str, 4, 4, 3, 1);
-        _checkFont(self, attrs, @"AppleSDGothicNeo-SemiBold", 14);
+        _checkFont(self, attrs, @"AppleSDGothicNeo-Bold", 14);
         attrs = _checkAttributes(self, str, 7, 7, 6, 0);
         attrs = _checkAttributes(self, str, 13, 13, 14, 1);
-        _checkFont(self, attrs, @"AppleSDGothicNeo-SemiBold", 14);
+        _checkFont(self, attrs, @"AppleSDGothicNeo-Bold", 14);
         attrs = _checkAttributes(self, str, 27, 27, 8, 0);
         attrs = _checkAttributes(self, str, 35, 35, 6, 1);
-        _checkFont(self, attrs, @"AppleSDGothicNeo-SemiBold", 14);
+        _checkFont(self, attrs, @"AppleSDGothicNeo-Bold", 14);
     });
 
     it(@"escape", ^{
@@ -108,7 +108,7 @@ describe(@"bold", ^{
         NSDictionary *attrs;
         attrs = _checkAttributes(self, str, 0, 0, 10, 0);
         attrs = _checkAttributes(self, str, 10, 10, 12, 1);
-        _checkFont(self, attrs, @"AppleSDGothicNeo-SemiBold", 14);
+        _checkFont(self, attrs, @"AppleSDGothicNeo-Bold", 14);
         attrs = _checkAttributes(self, str, 22, 22, 6, 0);
     });
 
@@ -118,7 +118,7 @@ describe(@"bold", ^{
         NSDictionary *attrs;
         attrs = _checkAttributes(self, str, 0, 0, 10, 0);
         attrs = _checkAttributes(self, str, 10, 10, 14, 1);
-        _checkFont(self, attrs, @"AppleSDGothicNeo-SemiBold", 14);
+        _checkFont(self, attrs, @"AppleSDGothicNeo-Bold", 14);
         attrs = _checkAttributes(self, str, 24, 24, 5, 0);
     });
 });
@@ -181,12 +181,12 @@ describe(@"mix", ^{
         NSDictionary *attrs;
         attrs = _checkAttributes(self, str, 0, 0, 8, 0);
         attrs = _checkAttributes(self, str, 8, 8, 2, 1);
-        _checkFont(self, attrs, @"AppleSDGothicNeo-SemiBold", 14);
+        _checkFont(self, attrs, @"AppleSDGothicNeo-Bold", 14);
         attrs = _checkAttributes(self, str, 10, 10, 5, 2);
-        _checkFont(self, attrs, @"AppleSDGothicNeo-SemiBold", 14);
+        _checkFont(self, attrs, @"AppleSDGothicNeo-Bold", 14);
         _checkColor(self, attrs, 0x99, 0x33, 0x11);
         attrs = _checkAttributes(self, str, 15, 15, 5, 1);
-        _checkFont(self, attrs, @"AppleSDGothicNeo-SemiBold", 14);
+        _checkFont(self, attrs, @"AppleSDGothicNeo-Bold", 14);
     });
 
     it(@"2", ^{
@@ -197,7 +197,7 @@ describe(@"mix", ^{
         attrs = _checkAttributes(self, str, 8, 8, 2, 1);
         _checkColor(self, attrs, 0x99, 0x33, 0x11);
         attrs = _checkAttributes(self, str, 10, 10, 5, 2);
-        _checkFont(self, attrs, @"AppleSDGothicNeo-SemiBold", 14);
+        _checkFont(self, attrs, @"AppleSDGothicNeo-Bold", 14);
         _checkColor(self, attrs, 0x99, 0x33, 0x11);
         attrs = _checkAttributes(self, str, 15, 15, 5, 1);
         _checkColor(self, attrs, 0x99, 0x33, 0x11);
@@ -211,10 +211,10 @@ describe(@"mix", ^{
         attrs = _checkAttributes(self, str, 8, 8, 2, 1);
         _checkColor(self, attrs, 0x99, 0x33, 0x11);
         attrs = _checkAttributes(self, str, 10, 10, 5, 2);
-        _checkFont(self, attrs, @"AppleSDGothicNeo-SemiBold", 14);
+        _checkFont(self, attrs, @"AppleSDGothicNeo-Bold", 14);
         _checkColor(self, attrs, 0x99, 0x33, 0x11);
         attrs = _checkAttributes(self, str, 15, 15, 5, 1);
-        _checkFont(self, attrs, @"AppleSDGothicNeo-SemiBold", 14);
+        _checkFont(self, attrs, @"AppleSDGothicNeo-Bold", 14);
     });
 });
 

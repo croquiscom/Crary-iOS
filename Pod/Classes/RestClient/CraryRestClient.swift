@@ -1,83 +1,83 @@
 import ObjectMapper
 
-public class CraryDateTransform: DateFormatterTransform {
+open class CraryDateTransform: DateFormatterTransform {
     public init() {
-        let formatter = NSDateFormatter()
-        formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en_US_POSIX")
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
-        formatter.timeZone = NSTimeZone(forSecondsFromGMT: 0)
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
         super.init(dateFormatter: formatter)
     }
 }
 
 extension CraryRestClient {
-    private func wrapComplete<T: Mappable>(complete: (NSError?, T?) -> Void) -> OnTaskComplete {
+    fileprivate func wrapComplete<T: Mappable>(_ complete: @escaping (NSError?, T?) -> Void) -> OnTaskComplete {
         return { (error, result) -> Void in
             if error != nil {
-                complete(error, nil)
+                complete(error as NSError?, nil)
             } else {
-                let converted = Mapper<T>().map(result)
+                let converted = Mapper<T>().map(JSONObject: result)
                 complete(nil, converted)
             }
         }
     }
 
-    private func wrapComplete<T: Mappable>(complete: (NSError?, [T]?) -> Void) -> OnTaskComplete {
+    fileprivate func wrapComplete<T: Mappable>(_ complete: @escaping (NSError?, [T]?) -> Void) -> OnTaskComplete {
         return { (error, result) -> Void in
             if error != nil {
-                complete(error, nil)
+                complete(error as NSError?, nil)
             } else {
-                let converted = Mapper<T>().mapArray(result)
+                let converted = Mapper<T>().mapArray(JSONObject: result)
                 complete(nil, converted)
             }
         }
     }
 
-    public func get<T: Mappable>(path: String!, parameters: AnyObject?, complete: (NSError?, T?) -> Void) {
+    public func get<T: Mappable>(_ path: String!, parameters: AnyObject?, complete: @escaping (NSError?, T?) -> Void) {
         get(path, parameters: parameters, complete: wrapComplete(complete))
     }
 
-    public func get<T: Mappable>(path: String!, parameters: AnyObject?, complete: (NSError?, [T]?) -> Void) {
+    public func get<T: Mappable>(_ path: String!, parameters: AnyObject?, complete: @escaping (NSError?, [T]?) -> Void) {
         get(path, parameters: parameters, complete: wrapComplete(complete))
     }
 
-    public func post<T: Mappable>(path: String!, parameters: AnyObject?, complete: (NSError?, T?) -> Void) {
+    public func post<T: Mappable>(_ path: String!, parameters: AnyObject?, complete: @escaping (NSError?, T?) -> Void) {
         post(path, parameters: parameters, complete: wrapComplete(complete))
     }
 
-    public func post<T: Mappable>(path: String!, parameters: AnyObject?, complete: (NSError?, [T]?) -> Void) {
+    public func post<T: Mappable>(_ path: String!, parameters: AnyObject?, complete: @escaping (NSError?, [T]?) -> Void) {
         post(path, parameters: parameters, complete: wrapComplete(complete))
     }
 
-    public func post<T: Mappable>(path: String!, parameters: AnyObject?, attachments: [CraryRestClientAttachment]?, complete: (NSError?, T?) -> Void) {
+    public func post<T: Mappable>(_ path: String!, parameters: AnyObject?, attachments: [CraryRestClientAttachment]?, complete: @escaping (NSError?, T?) -> Void) {
         post(path, parameters: parameters, attachments: attachments, complete: wrapComplete(complete))
     }
 
-    public func post<T: Mappable>(path: String!, parameters: AnyObject?, attachments: [CraryRestClientAttachment]?, complete: (NSError?, [T]?) -> Void) {
+    public func post<T: Mappable>(_ path: String!, parameters: AnyObject?, attachments: [CraryRestClientAttachment]?, complete: @escaping (NSError?, [T]?) -> Void) {
         post(path, parameters: parameters, attachments: attachments, complete: wrapComplete(complete))
     }
 
-    public func put<T: Mappable>(path: String!, parameters: AnyObject?, complete: (NSError?, T?) -> Void) {
+    public func put<T: Mappable>(_ path: String!, parameters: AnyObject?, complete: @escaping (NSError?, T?) -> Void) {
         put(path, parameters: parameters, complete: wrapComplete(complete))
     }
 
-    public func put<T: Mappable>(path: String!, parameters: AnyObject?, complete: (NSError?, [T]?) -> Void) {
+    public func put<T: Mappable>(_ path: String!, parameters: AnyObject?, complete: @escaping (NSError?, [T]?) -> Void) {
         put(path, parameters: parameters, complete: wrapComplete(complete))
     }
 
-    public func put<T: Mappable>(path: String!, parameters: AnyObject?, attachments: [CraryRestClientAttachment]?, complete: (NSError?, T?) -> Void) {
+    public func put<T: Mappable>(_ path: String!, parameters: AnyObject?, attachments: [CraryRestClientAttachment]?, complete: @escaping (NSError?, T?) -> Void) {
         put(path, parameters: parameters, attachments: attachments, complete: wrapComplete(complete))
     }
 
-    public func put<T: Mappable>(path: String!, parameters: AnyObject?, attachments: [CraryRestClientAttachment]?, complete: (NSError?, [T]?) -> Void) {
+    public func put<T: Mappable>(_ path: String!, parameters: AnyObject?, attachments: [CraryRestClientAttachment]?, complete: @escaping (NSError?, [T]?) -> Void) {
         put(path, parameters: parameters, attachments: attachments, complete: wrapComplete(complete))
     }
 
-    public func delete<T: Mappable>(path: String!, parameters: AnyObject?, complete: (NSError?, T?) -> Void) {
+    public func delete<T: Mappable>(_ path: String!, parameters: AnyObject?, complete: @escaping (NSError?, T?) -> Void) {
         delete(path, parameters: parameters, complete: wrapComplete(complete))
     }
 
-    public func delete<T: Mappable>(path: String!, parameters: AnyObject?, complete: (NSError?, [T]?) -> Void) {
+    public func delete<T: Mappable>(_ path: String!, parameters: AnyObject?, complete: @escaping (NSError?, [T]?) -> Void) {
         delete(path, parameters: parameters, complete: wrapComplete(complete))
     }
 }

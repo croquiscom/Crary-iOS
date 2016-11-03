@@ -4,7 +4,7 @@ import XCTest
 
 let BASE_URL = "http://localhost:3000/"
 
-func toInt(value: AnyObject?) -> Int? {
+func toInt(_ value: AnyObject?) -> Int? {
     if let value = value {
         if let i = value as? Int {
             return i
@@ -15,7 +15,7 @@ func toInt(value: AnyObject?) -> Int? {
     return 0
 }
 
-func toBool(value: AnyObject?) -> Bool? {
+func toBool(_ value: AnyObject?) -> Bool? {
     if let value = value {
         if let i = value as? Bool {
             return i
@@ -40,13 +40,13 @@ class CraryRestClientMappingTest: XCTestCase {
             self.d = d
         }
 
-        required init?(_ map: Map) {
+        required init?(map: Map) {
         }
 
         func mapping(map: Map) {
             a <- map["a"]
-            b <- (map["b"], TransformOf<Int, AnyObject>(fromJSON: { toInt($0) }, toJSON: { $0 }))
-            c <- (map["c"], TransformOf<Bool, AnyObject>(fromJSON: { toBool($0) }, toJSON: { $0 }))
+            b <- (map["b"], TransformOf<Int, AnyObject>(fromJSON: { toInt($0) }, toJSON: { $0 as AnyObject }))
+            c <- (map["c"], TransformOf<Bool, AnyObject>(fromJSON: { toBool($0) }, toJSON: { $0 as AnyObject }))
             d <- map["d"]
         }
 
@@ -58,7 +58,7 @@ class CraryRestClientMappingTest: XCTestCase {
             return ["a": self.a, "b": self.b, "c": self.c, "d": d] as NSDictionary
         }
 
-        func test(a: String, _ b: Int, _ c: Bool, _ d: TestObject?) {
+        func test(_ a: String, _ b: Int, _ c: Bool, _ d: TestObject?) {
             XCTAssertEqual(self.a, a)
             XCTAssertEqual(self.b, b)
             XCTAssertEqual(self.c, c)
@@ -76,12 +76,12 @@ class CraryRestClientMappingTest: XCTestCase {
             var d: String?
             var e: Int?
 
-            required init?(_ map: Map) {
+            required init?(map: Map) {
             }
 
             func mapping(map: Map) {
                 d <- map["d"]
-                e <- (map["e"], TransformOf<Int, AnyObject>(fromJSON: { toInt($0) }, toJSON: { $0 }))
+                e <- (map["e"], TransformOf<Int, AnyObject>(fromJSON: { toInt($0) }, toJSON: { $0 as AnyObject }))
             }
         }
 
@@ -90,7 +90,7 @@ class CraryRestClientMappingTest: XCTestCase {
             var size: Int?
             var type: String?
 
-            required init?(_ map: Map) {
+            required init?(map: Map) {
             }
 
             func mapping(map: Map) {
@@ -106,12 +106,12 @@ class CraryRestClientMappingTest: XCTestCase {
         var f1: File?
         var f2: File?
 
-        required init?(_ map: Map) {
+        required init?(map: Map) {
         }
 
         func mapping(map: Map) {
             a <- map["a"]
-            b <- (map["b"], TransformOf<Int, AnyObject>(fromJSON: { toInt($0) }, toJSON: { $0 }))
+            b <- (map["b"], TransformOf<Int, AnyObject>(fromJSON: { toInt($0) }, toJSON: { $0 as AnyObject }))
             c <- map["c"]
             f1 <- map["f1"]
             f2 <- map["f2"]
@@ -119,9 +119,9 @@ class CraryRestClientMappingTest: XCTestCase {
     }
 
     class DateResult : Mappable {
-        var d: NSDate?
+        var d: Date?
 
-        required init?(_ map: Map) {
+        required init?(map: Map) {
         }
 
         func mapping(map: Map) {
@@ -138,9 +138,9 @@ class CraryRestClientMappingTest: XCTestCase {
     }
 
     func testObject() {
-        let expectation = expectationWithDescription("")
+        let expectation = self.expectation(description: "")
 
-        let restClient = CraryRestClient.sharedClient()
+        let restClient = CraryRestClient.shared()
         restClient.baseUrl = BASE_URL
         let parameters = TestObject("message", 5, true, TestObject("sub", 0, false, nil))
         restClient.get("echo", parameters: parameters.toDict()) { (error, result: TestObject?) -> Void in
@@ -157,19 +157,19 @@ class CraryRestClientMappingTest: XCTestCase {
             })
         }
 
-        waitForExpectationsWithTimeout(10) { (error) -> Void in
+        waitForExpectations(timeout: 10) { (error) -> Void in
         }
     }
 
     func testList() {
-        let expectation = expectationWithDescription("")
+        let expectation = self.expectation(description: "")
 
-        let restClient = CraryRestClient.sharedClient()
+        let restClient = CraryRestClient.shared()
         restClient.baseUrl = BASE_URL
         let obj1 = TestObject("obj1", 11, false, nil)
         let obj2 = TestObject("obj2", 22, true, TestObject("sub", 0, false, nil))
         let obj3 = TestObject("obj3", 33, false, nil)
-        let parameters = [obj1.toDict(), obj2.toDict(), obj3.toDict()]
+        let parameters = [obj1.toDict(), obj2.toDict(), obj3.toDict()] as AnyObject
         restClient.post("echo", parameters: parameters) { (error, result: [TestObject]?) -> Void in
             XCTAssertNil(error)
             XCTAssertNotNil(result)
@@ -181,20 +181,20 @@ class CraryRestClientMappingTest: XCTestCase {
             expectation.fulfill()
         }
 
-        waitForExpectationsWithTimeout(10) { (error) -> Void in
+        waitForExpectations(timeout: 10) { (error) -> Void in
         }
     }
 
     func testPostAttachments() {
-        let expectation = expectationWithDescription("")
+        let expectation = self.expectation(description: "")
 
-        let restClient = CraryRestClient.sharedClient()
+        let restClient = CraryRestClient.shared()
         restClient.baseUrl = BASE_URL
-        let parameters = ["a": "message", "b": 5, "c": ["d": "hello", "e": 9]]
+        let parameters = ["a": "message", "b": 5, "c": ["d": "hello", "e": 9]] as AnyObject
         let file1: [UInt8] = [1, 2, 3]
-        let attachment1 = CraryRestClientAttachment(data: NSData(bytes: file1, length: 3), name: "f1", mimeType: "image/jpeg", fileName: "photo.jpg")
+        let attachment1 = CraryRestClientAttachment(data: Data(bytes: file1), name: "f1", mimeType: "image/jpeg", fileName: "photo.jpg")
         let file2: [UInt8] = [4, 5, 6, 7, 8, 9, 10]
-        let attachment2 = CraryRestClientAttachment(data: NSData(bytes: file2, length: 7), name: "f2", mimeType: "audio/mpeg", fileName: "sound.mp3")
+        let attachment2 = CraryRestClientAttachment(data: Data(bytes: file2), name: "f2", mimeType: "audio/mpeg", fileName: "sound.mp3")
         let attachments: [CraryRestClientAttachment] = [attachment1, attachment2]
         restClient.post("echo", parameters: parameters, attachments: attachments) { (error, result: PostAttachmentsResult?) -> Void in
             XCTAssertNil(error)
@@ -220,22 +220,23 @@ class CraryRestClientMappingTest: XCTestCase {
             expectation.fulfill()
         }
 
-        waitForExpectationsWithTimeout(10) { (error) -> Void in
+        waitForExpectations(timeout: 10) { (error) -> Void in
         }
     }
 
     func testDate() {
-        let expectation = expectationWithDescription("")
+        let expectation = self.expectation(description: "")
 
-        let restClient = CraryRestClient.sharedClient()
+        let restClient = CraryRestClient.shared()
         restClient.baseUrl = BASE_URL
-        restClient.post("echo", parameters: ["d": "2014-11-25T10:30:05.010Z"]) { (error, result: DateResult?) -> Void in
+        let parameters = ["d": "2014-11-25T10:30:05.010Z"] as AnyObject
+        restClient.post("echo", parameters: parameters) { (error, result: DateResult?) -> Void in
             XCTAssertNil(error)
             XCTAssertNotNil(result)
-            let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
-            calendar.timeZone = NSTimeZone(abbreviation: "UTC")!
-            let unitFlags: NSCalendarUnit = [.Year, .Month, .Day, .Hour, .Minute, .Second]
-            let components = calendar.components(unitFlags, fromDate: result!.d!)
+            let calendar = NSCalendar(calendarIdentifier: NSCalendar.Identifier.gregorian)!
+            calendar.timeZone = TimeZone(abbreviation: "UTC")!
+            let unitFlags: NSCalendar.Unit = [.year, .month, .day, .hour, .minute, .second]
+            let components = calendar.components(unitFlags, from: result!.d!)
             XCTAssertEqual(components.year, 2014)
             XCTAssertEqual(components.month, 11)
             XCTAssertEqual(components.day, 25)
@@ -249,7 +250,7 @@ class CraryRestClientMappingTest: XCTestCase {
             expectation.fulfill()
         }
 
-        waitForExpectationsWithTimeout(10) { (error) -> Void in
+        waitForExpectations(timeout: 10) { (error) -> Void in
         }
     }
 }
