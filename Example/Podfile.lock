@@ -14,17 +14,17 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
-  - Crary (0.6.0):
-    - Crary/Dialog (= 0.6.0)
-    - Crary/RestClient (= 0.6.0)
-    - Crary/Util (= 0.6.0)
-  - Crary/Dialog (0.6.0)
-  - Crary/RestClient (0.6.0):
+  - Crary (0.6.1):
+    - Crary/Dialog (= 0.6.1)
+    - Crary/RestClient (= 0.6.1)
+    - Crary/Util (= 0.6.1)
+  - Crary/Dialog (0.6.1)
+  - Crary/RestClient (0.6.1):
     - AFNetworking
     - Crary/Util
     - DCKeyValueObjectMapping
     - ObjectMapper
-  - Crary/Util (0.6.0)
+  - Crary/Util (0.6.1)
   - DCKeyValueObjectMapping (1.5)
   - Expecta (1.0.5)
   - ObjectMapper (2.2.1)
@@ -41,7 +41,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
-  Crary: 22a50ef16d1d3c0db552f61bd1ea40adeb855954
+  Crary: 1f0efddcca8115386f73728d5a19061a47553059
   DCKeyValueObjectMapping: c2eb5a6529da100b2e49ef6a599663578051f077
   Expecta: e1c022fcd33910b6be89c291d2775b3fe27a89fe
   ObjectMapper: 41e43e1a89f8060ef5ea5d04ba852e269a621d68
