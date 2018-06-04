@@ -36,7 +36,7 @@
     [self alert:message done:nil];
 }
 
-+ (void)alert:(NSString *)message done:(void (^)())done
++ (void)alert:(NSString *)message done:(void (^)(void))done
 {
     NSString *title = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"];
     [self alert:message title:title done:done];
@@ -47,7 +47,7 @@
     [self alert:message title:title done:nil];
 }
 
-+ (void)alert:(NSString *)message title:(NSString *)title done:(void (^)())done
++ (void)alert:(NSString *)message title:(NSString *)title done:(void (^)(void))done
 {
     UIViewController *vc = [UIApplication sharedApplication].keyWindow.rootViewController;
     [self alert:vc message:message title:title done:done];
@@ -60,7 +60,7 @@
     [self alert:vc message:message done:nil];
 }
 
-+ (void)alert:(UIViewController *)vc message:(NSString *)message done:(void (^)())done {
++ (void)alert:(UIViewController *)vc message:(NSString *)message done:(void (^)(void))done {
     NSString *title = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"];
     [self alert:vc message:message title:title done:done];
 }
@@ -69,7 +69,7 @@
     [self alert:vc message:message title:title done:nil];
 }
 
-+ (void)alert:(UIViewController *)vc message:(NSString *)message title:(NSString *)title done:(void (^)())done {
++ (void)alert:(UIViewController *)vc message:(NSString *)message title:(NSString *)title done:(void (^)(void))done {
     if ([UIAlertController class]) {
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
         [alert addAction:[UIAlertAction actionWithTitle:_T(@"OK") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
