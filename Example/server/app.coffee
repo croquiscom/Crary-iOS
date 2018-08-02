@@ -1,4 +1,4 @@
-crary = require 'crary'
+crary = require '@croquiscom/crary'
 fs = require 'fs'
 multipart = require 'connect-multiparty'
 
