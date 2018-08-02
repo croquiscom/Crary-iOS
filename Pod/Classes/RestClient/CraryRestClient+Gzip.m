@@ -64,7 +64,7 @@ static NSData *deflateGzip(NSData *data)
     
     NSMutableURLRequest *request = [self.sessionManagerGzip.requestSerializer requestWithMethod:@"POST" URLString:[NSString stringWithFormat:@"%@%@", self.baseUrl, path] parameters:parameters error:nil];
     [request setHTTPBody:data];
-    [[self.sessionManagerGzip dataTaskWithRequest:request completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+    [[self.sessionManagerGzip dataTaskWithRequest:request uploadProgress:nil downloadProgress:nil completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         if (complete != nil) {
             complete(error, responseObject);
         }
