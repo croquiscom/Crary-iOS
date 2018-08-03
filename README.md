@@ -11,12 +11,13 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 Crary is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
-    pod 'Crary', :git => 'https://github.com/croquiscom/Crary-iOS.git', :tag => '0.1.0'
+    pod 'Crary', :git => 'https://github.com/croquiscom/Crary-iOS.git', :tag => 'v0.6.1'
 
 ## Author
 
-* yamigo, yamigo1021@gmail.com
 * sixmen, sixmen@gmail.com
+* yamigo, yamigo1021@gmail.com
+* yeonmee, yeonmee.son@croquis.com
 
 ## License
 

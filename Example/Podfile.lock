@@ -1,18 +1,18 @@
 PODS:
-  - AFNetworking (3.1.0):
-    - AFNetworking/NSURLSession (= 3.1.0)
-    - AFNetworking/Reachability (= 3.1.0)
-    - AFNetworking/Security (= 3.1.0)
-    - AFNetworking/Serialization (= 3.1.0)
-    - AFNetworking/UIKit (= 3.1.0)
-  - AFNetworking/NSURLSession (3.1.0):
+  - AFNetworking (3.2.1):
+    - AFNetworking/NSURLSession (= 3.2.1)
+    - AFNetworking/Reachability (= 3.2.1)
+    - AFNetworking/Security (= 3.2.1)
+    - AFNetworking/Serialization (= 3.2.1)
+    - AFNetworking/UIKit (= 3.2.1)
+  - AFNetworking/NSURLSession (3.2.1):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/Reachability (3.1.0)
-  - AFNetworking/Security (3.1.0)
-  - AFNetworking/Serialization (3.1.0)
-  - AFNetworking/UIKit (3.1.0):
+  - AFNetworking/Reachability (3.2.1)
+  - AFNetworking/Security (3.2.1)
+  - AFNetworking/Serialization (3.2.1)
+  - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
   - Crary (0.6.1):
     - Crary/Dialog (= 0.6.1)
@@ -26,27 +26,35 @@ PODS:
     - ObjectMapper
   - Crary/Util (0.6.1)
   - DCKeyValueObjectMapping (1.5)
-  - Expecta (1.0.5)
-  - ObjectMapper (2.2.1)
-  - Specta (1.0.5)
+  - Expecta (1.0.6)
+  - ObjectMapper (3.3.0)
+  - Specta (1.0.7)
 
 DEPENDENCIES:
   - Crary (from `../`)
   - Expecta
   - Specta
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - AFNetworking
+    - DCKeyValueObjectMapping
+    - Expecta
+    - ObjectMapper
+    - Specta
+
 EXTERNAL SOURCES:
   Crary:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
-  Crary: 1f0efddcca8115386f73728d5a19061a47553059
+  AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  Crary: 4d8136d35164b5b23e23105bdf841a586bb81e67
   DCKeyValueObjectMapping: c2eb5a6529da100b2e49ef6a599663578051f077
-  Expecta: e1c022fcd33910b6be89c291d2775b3fe27a89fe
-  ObjectMapper: 41e43e1a89f8060ef5ea5d04ba852e269a621d68
-  Specta: ac94d110b865115fe60ff2c6d7281053c6f8e8a2
+  Expecta: 3b6bd90a64b9a1dcb0b70aa0e10a7f8f631667d5
+  ObjectMapper: b612bf8c8e99c4dc0bb6013a51f7c27966ed5da9
+  Specta: 3e1bd89c3517421982dc4d1c992503e48bd5fe66
 
 PODFILE CHECKSUM: 9156353399092af86efeefdb11b7b03eab476656
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.5.3
